@@ -1,0 +1,234 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+a:hover {
+  filter: brightness(80%);
+}
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+
+main section[hide] {
+  display: none;
+}
+
+main {}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+/* About */
+#about {
+  background-image: url('DestanSarpkaya.jpg');
+  background-size: contain;
+  height: 100vh;
+}
+
+#blur {
+  background-image: url('DestanSarpkaya.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter: blur(100px);
+  width: 100%;
+  height: 100%;
+}
+
+#nameContainer {
+  color: white;
+}
+
+#about img {
+  width: 500px;
+}
+
+#details {
+  background: #556985;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+#details>div {
+  max-width: 950px;
+  margin: auto;
+  text-align: left;
+}
+
+#details a,
+#details a:active,
+#details a:hover,
+#details a:visited {
+  color: blanchedalmond;
+  text-decoration: none;
+}
+
+#details li {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* Life Timeline */
+#lifeTimeline {
+  background: #D8F0FE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+}
+
+#lifeTimeline div>span {
+  display: block;
+  color: #555;
+}
+
+#lifeTimeline .empty {
+  margin-left: 43px;
+}
+
+#lifeTimeline .love {
+  color: firebrick;
+}
+
+#lifeTimeline .job {
+  color: #1E81F5;
+}
+
+#lifeTimeline .wolf {
+  font-size: 12px;
+  margin-left: -2px;
+}
+
+#lifeTimeline a,
+#lifeTimeline a:active,
+#lifeTimeline a:hover,
+#lifeTimeline a:visited {
+  color: darkred;
+  text-decoration: none;
+}
+
+#contact {
+  background: #F6F8FA;
+  padding: 20px 0;
+  text-align: center;
+}
+
+#contact>div {
+  color: #959DA5;
+  margin-bottom: 10px;
+}
+
+#contact a>img {
+  filter: invert(71%) sepia(15%) saturate(189%) hue-rotate(169deg) brightness(86%) contrast(86%);
+  margin-right: 15px;
+}
+
+/* ==================== */
+/* X-Small devices (portrait phones, less than 576px) */
+
+#blur {
+  text-align: center;
+}
+
+#nameContainer {
+  font-size: 0.9rem;
+  padding-top: 50px;
+}
+
+@media (min-width: 375px) {
+  #nameContainer {
+    font-size: 1rem;
+  }
+
+  #lifeTimeline {
+    font-size: 1.1rem;
+  }
+
+  #lifeTimeline .empty {
+    margin-left: 47px;
+  }
+}
+
+@media (min-width: 450px) {
+  #lifeTimeline {
+    font-size: 1.3rem;
+  }
+
+  #lifeTimeline .empty {
+    margin-left: 55px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+  #lifeTimeline {
+    background: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #lifeTimeline div>span {
+    color: white;
+  }
+
+  #lifeTimeline>span {
+    position: absolute;
+    width: 100vw;
+    height: 652px;
+    top: 0;
+    z-index: -1;
+    background: rgba(0, 0, 0, .4) url(family.png);
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #lifeTimeline a,
+  #lifeTimeline a:active,
+  #lifeTimeline a:hover,
+  #lifeTimeline a:visited {
+    color: #FFBBAA;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #blur {
+    text-align: start;
+  }
+
+  #nameContainer {
+    padding-top: 150px;
+    padding-left: 50px;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #nameContainer {
+    padding-top: 250px;
+  }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  #nameContainer {
+    padding-top: 450px;
+  }
+}
