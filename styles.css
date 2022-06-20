@@ -14,12 +14,6 @@ a:visited {
   text-decoration: none;
 }
 
-main section[hide] {
-  display: none;
-}
-
-main {}
-
 h1,
 h2 {
   margin: 0;
@@ -29,29 +23,17 @@ h1 {
   font-size: 3em;
 }
 
-/* About */
 #about {
-  background-image: url('DestanSarpkaya.jpg');
-  background-size: contain;
-  height: 100vh;
-}
-
-#blur {
-  background-image: url('DestanSarpkaya.jpg');
+  background-image: url(images/DestanSarpkaya.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   backdrop-filter: blur(100px);
-  width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 #nameContainer {
   color: white;
-}
-
-#about img {
-  width: 500px;
 }
 
 #details {
@@ -72,7 +54,6 @@ h1 {
 #details a:hover,
 #details a:visited {
   color: blanchedalmond;
-  text-decoration: none;
 }
 
 #details li {
@@ -80,7 +61,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Life Timeline */
 #lifeTimeline {
   background: #D8F0FE;
   display: flex;
@@ -116,7 +96,6 @@ h1 {
 #lifeTimeline a:hover,
 #lifeTimeline a:visited {
   color: darkred;
-  text-decoration: none;
 }
 
 #contact {
@@ -138,7 +117,7 @@ h1 {
 /* ==================== */
 /* X-Small devices (portrait phones, less than 576px) */
 
-#blur {
+#about {
   text-align: center;
 }
 
@@ -187,10 +166,10 @@ h1 {
   #lifeTimeline>span {
     position: absolute;
     width: 100vw;
-    height: 652px;
+    height: 676px;
     top: 0;
     z-index: -1;
-    background: rgba(0, 0, 0, .4) url(family.jpg);
+    background: rgba(0, 0, 0, .4) url(images/family.jpg);
     background-blend-mode: darken;
     background-size: cover;
     background-position: center;
@@ -209,7 +188,7 @@ h1 {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  #blur {
+  #about {
     text-align: start;
   }
 
