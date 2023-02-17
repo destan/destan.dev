@@ -259,7 +259,7 @@ input {
 }
 
 .tab-label::before {
-  content: "▼";
+  content: "▶";
   width: 2em;
   height: 1em;
   text-align: center;
@@ -291,7 +291,7 @@ input:checked + .tab-label {
 }
 
 input:checked + .tab-label::before {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
 }
 
 input:checked ~ .tab-content {
