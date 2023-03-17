@@ -1,0 +1,218 @@
+/*
+light: #f2f2f2
+dark: #d9d9d9
+title-bg: #003d54
+title-color: #348488
+*/
+
+body[debug] page {
+    border: 1px solid red;
+}
+page {
+    background: white;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    display: block;
+    margin: 0.5cm auto;
+    position: relative;
+}
+page[size="A4"] {
+    width: 21cm;
+    height: 29.7cm;
+}
+page[size="A4"][layout="landscape"] {
+    width: 29.7cm;
+    height: 21cm;
+}
+page[size="A3"] {
+    width: 29.7cm;
+    height: 42cm;
+}
+page[size="A3"][layout="landscape"] {
+    width: 42cm;
+    height: 29.7cm;
+}
+page[size="A5"] {
+    width: 14.8cm;
+    height: 21cm;
+}
+page[size="A5"][layout="landscape"] {
+    width: 21cm;
+    height: 14.8cm;
+}
+@media print {
+    body, page {
+        margin: 0;
+        box-shadow: unset;
+    }
+}
+
+html,
+body {
+    background: #ccc;
+    font-family: sans-serif;
+    font-size: 10pt;
+    margin: 0;
+    padding: 0;
+}
+
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h1 {
+    background-color: #003d54;
+    color: #fff;
+    padding: 25px 20px;
+}
+
+h1 > span {
+    float: right;
+    position: relative;
+}
+
+page-meta{
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    top: 33px;
+}
+
+page-number {
+    bottom: 20px;
+    color: #ccc;
+    position: absolute;
+    right: 20px;
+}
+
+section > div > em {
+    color: #348488;
+    font-style: normal;
+}
+
+section {
+    display: flex;
+}
+
+section > h2 {
+    color: #003d54;
+    display: flex;
+    flex: 0;
+    font-size: 1.1rem;
+    font-weight: normal;
+    justify-content: center;
+    padding: 15px;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+}
+
+section.dark > h2 {
+    background-color: #d9d9d9;
+}
+
+section.light > h2 {
+    background-color: #f2f2f2;
+}
+
+section > div {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Table Section */
+section > div.table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+section > div.table > section {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.dark-bg,
+section > div > p:nth-child(odd),
+section > div.table > section:nth-child(even),
+section > div.table.reverse-color > section:nth-child(odd)
+{
+    background-color: #f2f2f2;
+}
+
+section > div.table.reverse-color > section:nth-child(even) {
+    background-color: unset;
+}
+
+section > div.table > section > dl{
+    display: flex;
+    flex: 1;
+}
+
+section > div.text-padding {
+    padding: 10px 0 0 20px;
+}
+
+section > div.text-padding p {
+    padding: 5px 0 10px 0;
+}
+
+dt {
+    display: flex;
+    flex-grow: 0;
+    color: #348488;
+    min-width: 80px;
+}
+
+.wide-dt dt {
+    min-width: 125px;
+}
+
+dd {
+    display: flex;
+    flex-grow: 1;
+}
+
+dd strong {
+    color: #333;
+}
+
+dd > em {
+    color: #555;
+}
+
+dd,
+dt {
+    padding: 10px 10px 10px 20px;
+}
+
+li {
+    padding: 2px;
+}
+
+main {
+    padding: 30px;
+}
+
+main h2 {
+    color: #003d54;
+}
+
+main h3 {
+    color: #348488;
+    padding: 10px 0 0 0;
+}
+
+main p {
+    text-align: justify;
+    padding: 5px 0;
+}
