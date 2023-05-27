@@ -24,10 +24,10 @@ h1 {
 }
 
 #about {
-  background-image: url(images/DestanSarpkaya.jpg);
+  background-image: url(java-the-german-shepherd.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center -550px;
   height: 100vh;
 }
 
@@ -38,14 +38,12 @@ h1 {
 #details {
   background: #556985;
   color: white;
-  padding: 50px 0;
   text-align: center;
+  height: 600px;
 }
 
 #details>div {
-  max-width: 950px;
-  margin: auto;
-  text-align: left;
+
 }
 
 #details a,
@@ -64,11 +62,23 @@ h1 {
 }
 
 #lifeTimeline {
-  background: #D8F0FE;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 0;
+
+  background: url(963007200012338.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#lifeTimeline>span {
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+#lifeTimeline>div {
+  z-index: 2;
 }
 
 #lifeTimeline div>span {
@@ -86,11 +96,7 @@ h1 {
 
 #lifeTimeline .job {
   color: #1E81F5;
-}
-
-#lifeTimeline .wolf {
-  font-size: 12px;
-  margin-left: -2px;
+  margin-left: -6px;
 }
 
 #lifeTimeline a,
@@ -156,7 +162,6 @@ h1 {
 @media (min-width: 576px) {
 
   #lifeTimeline {
-    background: none;
     position: relative;
     overflow: hidden;
   }
@@ -170,10 +175,6 @@ h1 {
     width: 100vw;
     height: 676px;
     top: 0;
-    z-index: -1;
-    background: rgba(0, 0, 0, .4) url(images/family.jpg);
-    background-size: cover;
-    background-position: center;
   }
 
   #lifeTimeline a,
