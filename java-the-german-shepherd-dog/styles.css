@@ -20,19 +20,19 @@ h2 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 6em;
 }
 
 #about {
   background-image: url(java-the-german-shepherd.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center -550px;
+  background-position-y: center;
   height: 100vh;
 }
 
 #nameContainer {
-  color: white;
+  color: #d5a800;
 }
 
 #details {
@@ -83,7 +83,7 @@ h1 {
 
 #lifeTimeline div>span {
   display: block;
-  color: #555;
+  color: white;
 }
 
 #lifeTimeline .empty {
@@ -136,6 +136,7 @@ h1 {
 
 @media (min-width: 375px) {
   #nameContainer {
+    color: #d5a800;
     font-size: 1rem;
   }
 
@@ -166,10 +167,6 @@ h1 {
     overflow: hidden;
   }
 
-  #lifeTimeline div>span {
-    color: white;
-  }
-
   #lifeTimeline>span {
     position: absolute;
     width: 100vw;
@@ -195,6 +192,7 @@ h1 {
   }
 
   #nameContainer {
+    color: white;
     padding-top: 150px;
     padding-left: 50px;
   }
@@ -214,9 +212,7 @@ h1 {
   }
 }
 
-
 /* Accordion  */
-
 input {
   position: absolute;
   opacity: 0;
