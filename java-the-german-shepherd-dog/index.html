@@ -45,6 +45,14 @@
     gtag('config', 'G-0KJ5Z3CV3H');
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js"></script>
+  <script>
+    function setClipboard(text) {
+      const type = "text/plain";
+      const blob = new Blob([text], { type });
+      const data = [new ClipboardItem({ [type]: blob })];
+      navigator.clipboard.write(data);
+    }
+  </script>
 </head>
 <body>
 <section id="about">
@@ -104,6 +112,10 @@
     <span>2020 ● Born</span>
     <span class="empty">|</span>
   </div>
+</section>
+<section id="contact">
+  <div>mikroçip microchip <span style="cursor: pointer;" onclick="setClipboard('963007200012338')">963007200012338 📋</span></div>
+  <div>male german shepherd dog</div>
 </section>
 </body>
 </html>

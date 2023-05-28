@@ -64,16 +64,26 @@ h1 {
 }
 
 #lifeTimeline {
-  background: #D8F0FE;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px 0;
+  position: relative;
+}
+
+#lifeTimeline>span {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0)), url(images/family.jpg) center;
+  background-size: cover;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
 }
 
 #lifeTimeline div>span {
   display: block;
-  color: #555;
+  color: white;
 }
 
 #lifeTimeline .empty {
@@ -97,7 +107,8 @@ h1 {
 #lifeTimeline a:active,
 #lifeTimeline a:hover,
 #lifeTimeline a:visited {
-  color: darkred;
+  color: white;
+  font-weight: bold;
 }
 
 #contact {
@@ -133,7 +144,7 @@ h1 {
     font-size: 1rem;
   }
 
-  #lifeTimeline {
+  #lifeTimeline>div {
     font-size: 1.1rem;
   }
 
@@ -143,7 +154,7 @@ h1 {
 }
 
 @media (min-width: 450px) {
-  #lifeTimeline {
+  #lifeTimeline>div {
     font-size: 1.3rem;
   }
 
@@ -155,33 +166,6 @@ h1 {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
-  #lifeTimeline {
-    background: none;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #lifeTimeline div>span {
-    color: white;
-  }
-
-  #lifeTimeline>span {
-    position: absolute;
-    width: 100vw;
-    height: 676px;
-    top: 0;
-    z-index: -1;
-    background: rgba(0, 0, 0, .4) url(images/family.jpg);
-    background-size: cover;
-    background-position: center;
-  }
-
-  #lifeTimeline a,
-  #lifeTimeline a:active,
-  #lifeTimeline a:hover,
-  #lifeTimeline a:visited {
-    color: #FFBBAA;
-  }
 }
 
 /* Medium devices (tablets, 768px and up) */
