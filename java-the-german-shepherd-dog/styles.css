@@ -67,14 +67,9 @@ h1 {
   align-items: center;
   padding: 50px 0;
 
-  background: url(963007200012338.jpg);
+  background: url(963007200012338-blur.jpg);
   background-size: cover;
-  background-position: center;
-}
-
-#lifeTimeline>span {
-  z-index: 1;
-  backdrop-filter: blur(10px);
+  background-position: center 20%;
 }
 
 #lifeTimeline>div {
@@ -162,24 +157,6 @@ h1 {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
 
-  #lifeTimeline {
-    position: relative;
-    overflow: hidden;
-  }
-
-  #lifeTimeline>span {
-    position: absolute;
-    width: 100vw;
-    height: 676px;
-    top: 0;
-  }
-
-  #lifeTimeline a,
-  #lifeTimeline a:active,
-  #lifeTimeline a:hover,
-  #lifeTimeline a:visited {
-    color: #FFBBAA;
-  }
 }
 
 /* Medium devices (tablets, 768px and up) */

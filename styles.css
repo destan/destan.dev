@@ -64,21 +64,13 @@ h1 {
 }
 
 #lifeTimeline {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 50px 0;
-  position: relative;
-}
-
-#lifeTimeline>span {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.0)), url(images/family.jpg) center;
   background-size: cover;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  position: relative;
 }
 
 #lifeTimeline div>span {
@@ -154,9 +146,6 @@ h1 {
 }
 
 @media (min-width: 450px) {
-  #lifeTimeline>span {
-    height: 575px;
-  }
   #lifeTimeline>div {
     font-size: 1.3rem;
   }
