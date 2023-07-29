@@ -8,6 +8,12 @@ title-color: #348488
 body[debug] page {
     border: 1px solid red;
 }
+
+a[target="_blank"]::after { /*https://stackoverflow.com/a/52058198/878361*/
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin: 0 3px 0 5px;
+}
+
 page {
     background: white;
     box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
@@ -43,6 +49,10 @@ page[size="A5"][layout="landscape"] {
     body, page {
         margin: 0;
         box-shadow: unset;
+    }
+
+    #download {
+        display: none;
     }
 }
 
@@ -92,16 +102,16 @@ page-number {
     right: 20px;
 }
 
-section > div > em {
+page section > div > em {
     color: #348488;
     font-style: normal;
 }
 
-section {
+page section {
     display: flex;
 }
 
-section > h2 {
+page section > h2 {
     color: #003d54;
     display: flex;
     flex: 0;
@@ -121,7 +131,7 @@ section.light > h2 {
     background-color: #f2f2f2;
 }
 
-section > div {
+page section > div {
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -209,10 +219,68 @@ main h2 {
 
 main h3 {
     color: #348488;
+    display: inline-block;
     padding: 10px 0 0 0;
 }
 
 main p {
     text-align: justify;
     padding: 5px 0;
+}
+
+#download {
+    background-color: #348488;
+    border-radius: 1cm;
+    color: white;
+    font-size: 1cm;
+    height: 2cm;
+    line-height: 2cm;
+    position: fixed;
+    right: calc(50% - 13cm);
+    text-align: center;
+    bottom: 0.5cm;
+    width: 2cm;
+}
+
+#download img {
+    display: inline-block;
+    filter: invert(1);
+    width: 50%;
+    margin-top: 18px;
+}
+
+#download,
+#download:active,
+#download:visited {
+    text-decoration: none;
+}
+
+#download:hover {
+    background-color: #003d54;
+    text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+    #download {
+        border-radius: 3rem;
+        bottom: 10px;
+        height: 6rem;
+        right: 10px;
+        width: 6rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #download {
+        border-radius: 5rem;
+        bottom: 20px;
+        height: 10rem;
+        right: 20px;
+        width: 10rem;
+        font-size: 2rem;
+    }
+
+    #download img {
+        margin-top: 30px;
+    }
 }
