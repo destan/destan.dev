@@ -1,55 +1,17 @@
 class SyntaxHighlighter extends HTMLElement {
     constructor() {
         super();
-        this.prismLoaded = false;
+        this.prismLoaded = window.Prism ? true : false;
     }
 
     connectedCallback() {
-        this.loadPrism().then(() => {
+        if (window.Prism) {
             this.highlightCode();
-        });
-    }
-
-    async loadPrism() {
-        if (this.prismLoaded || window.Prism) {
-            this.prismLoaded = true;
-            return;
-        }
-
-        try {
-            // Load Prism CSS
-            const cssLink = document.createElement('link');
-            cssLink.rel = 'stylesheet';
-            cssLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
-            document.head.appendChild(cssLink);
-
-            // Load Prism core JS
-            await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js');
-            
-            // Load Prism autoloader
-            await this.loadScript('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js');
-
-            this.prismLoaded = true;
-        } catch (error) {
-            console.error('Failed to load Prism.js:', error);
+        } else {
+            console.warn('Prism.js not loaded, syntax highlighting unavailable');
         }
     }
 
-    loadScript(src) {
-        return new Promise((resolve, reject) => {
-            // Check if script is already loaded
-            if (document.querySelector(`script[src="${src}"]`)) {
-                resolve();
-                return;
-            }
-
-            const script = document.createElement('script');
-            script.src = src;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-    }
 
     highlightCode() {
         if (!window.Prism) {

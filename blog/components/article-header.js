@@ -17,7 +17,7 @@ class ArticleHeader extends HTMLElement {
         const title = this.getAttribute('title') || '';
         const subtitle = this.getAttribute('subtitle') || '';
         const date = this.getAttribute('date') || '';
-        const author = this.getAttribute('author') || 'Sarah Chen';
+        const author = this.getAttribute('author') || 'Destan Sarpkaya';
         const authorInitials = this.getAttribute('author-initials') || 'SC';
 
         // Create shadow DOM

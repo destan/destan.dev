@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A comprehensive guide to understanding idempotency in programming, APIs, and system design with practical examples and best practices.">
     <meta name="keywords" content="idempotency, programming, APIs, system design, REST, HTTP, software engineering">
-    <meta name="author" content="Sarah Chen">
+    <meta name="author" content="Destan Sarpkaya">
     
     <!-- SEO-friendly fallback content for web components -->
     <noscript>
@@ -37,11 +37,15 @@
     <!-- Preload critical component bundle -->
     <link rel="preload" href="../components/components-bundle.js" as="script">
     <link rel="preload" href="../components/syntax-highlighter.js" as="script">
-    <link rel="preload" href="../components/component-loader.js" as="script">
+    <link rel="preload" href="../components/site-footer.js" as="script">
+    <link rel="preload" href="../components/back-to-top.js" as="script">
+    <link rel="preload" href="../components/callout-box.js" as="script">
+    <link rel="preload" href="../components/author-bio.js" as="script">
     
-    <!-- Preload Prism.js for syntax highlighting -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js" as="script">
+    <!-- Load Prism.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 </head>
 <body>
@@ -54,7 +58,7 @@
                 title="Understanding Idempotency"
                 subtitle="A Developer's Complete Guide to Building Reliable and Predictable Systems"
                 date="2025-06-20"
-                author="Sarah Chen"
+                author="Destan Sarpkaya"
                 author-initials="SC">
             </article-header>
 
@@ -556,10 +560,9 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
         </article>
 
         <author-bio 
-            author="Sarah Chen"
-            author-initials="SC"
-            title="Senior Software Engineer & Systems Architect"
-            bio="Sarah is a senior software engineer with over 8 years of experience building distributed systems and APIs. She specializes in system design, microservices architecture, and developer experience. When not coding, she enjoys contributing to open source projects and mentoring junior developers.">
+            author="Destan Sarpkaya"
+            author-initials="DS"
+            title="Software Architect">
         </author-bio>
     </div>
 </main>
@@ -569,14 +572,15 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
 <back-to-top></back-to-top>
 
 <!-- Optimized Component Loading -->
-<script src="../components/loading-indicator.js"></script>
 <script src="../components/components-bundle.js"></script>
 <script src="../components/syntax-highlighter.js"></script>
-<script src="../components/component-loader.js"></script>
+<script src="../components/site-footer.js"></script>
+<script src="../components/back-to-top.js"></script>
+<script src="../components/callout-box.js"></script>
+<script src="../components/author-bio.js"></script>
 
 <script>
-// Show loading indicator
-LoadingIndicator.show();
+// Components will load automatically
 
 // Initialize syntax highlighting immediately
 document.addEventListener('DOMContentLoaded', () => {
@@ -596,46 +600,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Also try after a short delay in case of loading timing issues
     setTimeout(initSyntaxHighlighting, 100);
     
-    // Backup: Load Prism directly if component system fails
-    setTimeout(() => {
-        if (!window.Prism && !document.querySelector('syntax-highlighter')) {
-            console.log('Loading Prism.js directly as backup');
-            const prismCSS = document.createElement('link');
-            prismCSS.rel = 'stylesheet';
-            prismCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css';
-            document.head.appendChild(prismCSS);
-            
-            const prismJS = document.createElement('script');
-            prismJS.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js';
-            prismJS.onload = () => {
-                const autoloader = document.createElement('script');
-                autoloader.src = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js';
-                autoloader.onload = () => {
-                    if (window.Prism) {
-                        console.log('Prism loaded directly, highlighting code');
-                        Prism.highlightAll();
-                    }
-                };
-                document.head.appendChild(autoloader);
-            };
-            document.head.appendChild(prismJS);
-        }
-    }, 2000); // Wait 2 seconds before using backup
     
-    // Load non-critical components
-    const nonCriticalComponents = [
-        'site-footer',
-        'back-to-top', 
-        'callout-box',
-        'author-bio'
-    ];
-    
-    // Load them with priority
-    loadComponents(nonCriticalComponents).then(() => {
-        console.log('All components loaded');
-    }).catch(error => {
-        console.error('Component loading error:', error);
-    });
+    // All components are now loaded via components-bundle.js
+    console.log('All components loaded via bundle');
 });
 </script>
 </body>

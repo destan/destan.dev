@@ -132,8 +132,8 @@ class ArticleHeader extends HTMLElement {
         const title = this.getAttribute('title') || '';
         const subtitle = this.getAttribute('subtitle') || '';
         const date = this.getAttribute('date') || '';
-        const author = this.getAttribute('author') || 'Sarah Chen';
-        const authorInitials = this.getAttribute('author-initials') || 'SC';
+        const author = this.getAttribute('author') || 'Destan Sarpkaya';
+        const authorInitials = this.getAttribute('author-initials') || 'DS';
 
         // Create shadow DOM
         if (!this.shadowRoot) {
@@ -241,13 +241,13 @@ class ArticleHeader extends HTMLElement {
                 }
             </style>
             <header>
-                <h1 class="article-title">\${title}</h1>
-                \${subtitle ? `<p class="article-subtitle">\${subtitle}</p>` : ''}
+                <h1 class="article-title">${title}</h1>
+                ${subtitle ? `<p class="article-subtitle">${subtitle}</p>` : ''}
                 <div class="article-meta">
-                    <div class="author-avatar" aria-hidden="true">\${authorInitials}</div>
+                    <div class="author-avatar" aria-hidden="true">${authorInitials}</div>
                     <div>
-                        <div>By <strong>\${author}</strong></div>
-                        \${date ? `<time datetime="\${date}">\${this.formatDate(date)}</time>` : ''}
+                        <div>By <strong>${author}</strong></div>
+                        ${date ? `<time datetime="${date}">${this.formatDate(date)}</time>` : ''}
                     </div>
                 </div>
             </header>

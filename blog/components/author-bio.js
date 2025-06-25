@@ -19,9 +19,9 @@ class AuthorBio extends HTMLElement {
     }
 
     render() {
-        const author = this.getAttribute('author') || 'Sarah Chen';
-        const authorInitials = this.getAttribute('author-initials') || 'SC';
-        const title = this.getAttribute('title') || 'Senior Software Engineer';
+        const author = this.getAttribute('author') || 'Destan Sarpkaya';
+        const authorInitials = this.getAttribute('author-initials') || 'DS';
+        const title = this.getAttribute('title') || 'Software Architect';
         const bio = this.getAttribute('bio') || 'Passionate about building scalable web applications and sharing knowledge through technical writing.';
 
         this.shadowRoot.innerHTML = `
