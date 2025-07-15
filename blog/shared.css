@@ -77,7 +77,6 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 2rem 0;
 }
 
 /* --- Fallback Styles for Web Components --- */
@@ -229,7 +228,6 @@ blockquote {
     }
 
     .main-content {
-        padding: 1.5rem 0;
         gap: 1.5rem;
     }
 
@@ -277,7 +275,6 @@ blockquote {
     }
 
     .main-content {
-        padding: 1rem 0;
         gap: 1rem;
     }
 

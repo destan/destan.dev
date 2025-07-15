@@ -39,8 +39,9 @@ class SiteHeader extends HTMLElement {
                 if (trimmedPart.toLowerCase() === 'home') {
                     href = '/';
                 } else {
-                    // For other breadcrumbs, create a lowercase, hyphenated path
-                    href = '/' + trimmedPart.toLowerCase().replace(/\s+/g, '-');
+                    // Build path from breadcrumb parts up to current index
+                    const pathParts = breadcrumbParts.slice(1, index + 1).map(p => p.trim().toLowerCase().replace(/\s+/g, '-'));
+                    href = '/' + pathParts.join('/');
                 }
                 
                 return `<a href="${href}">${trimmedPart}</a>`;
@@ -86,11 +87,12 @@ class SiteHeader extends HTMLElement {
                 .breadcrumbs {
                     display: flex;
                     align-items: center;
+                    justify-content: flex-start;
                     font-size: 0.875rem;
                     color: var(--text-secondary, #64748b);
-                    margin-bottom: 1rem;
                     font-family: inherit;
                     line-height: 1.4;
+                    min-height: 2rem;
                 }
 
                 .breadcrumbs a {

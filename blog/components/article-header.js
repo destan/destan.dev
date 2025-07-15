@@ -25,20 +25,12 @@ class ArticleHeader extends HTMLElement {
             <style>
                 /* Reset and isolation */
                 :host {
-                    all: initial;
                     display: block;
                     text-align: center;
                     margin-bottom: 3rem;
                     padding-bottom: 2rem;
-                    border-bottom: 1px solid #e2e8f0;
+                    border-bottom: 1px solid var(--border-color);
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --border-color: #e2e8f0;
-                    --primary-color: #2563eb;
-                    --accent-color: #f59e0b;
-                    --text-primary: #1e293b;
-                    --text-secondary: #64748b;
                 }
 
                 :host *,
@@ -53,11 +45,8 @@ class ArticleHeader extends HTMLElement {
                     font-size: 3rem;
                     font-weight: 800;
                     margin-bottom: 1rem;
-                    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--accent-color, #f59e0b));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
                     background-clip: text;
-                    color: var(--text-primary, #1e293b);
+                    color: var(--text-primary);
                     font-family: inherit;
                     line-height: 1.2;
                 }
