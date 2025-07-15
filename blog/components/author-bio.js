@@ -93,22 +93,96 @@ class AuthorBio extends HTMLElement {
                     margin: 0;
                 }
 
+                /* Tablet responsive design */
                 @media (max-width: 768px) {
+                    .author-bio {
+                        margin: 2.5rem 0;
+                        padding: 1.5rem;
+                    }
+
                     .author-info {
                         flex-direction: column;
                         gap: 1rem;
                         text-align: center;
                     }
 
-                    .author-bio {
-                        padding: 1.5rem;
+                    .author-details h4 {
+                        font-size: 1.0625rem;
+                    }
+
+                    .author-title {
+                        font-size: 0.8125rem;
+                    }
+
+                    .author-bio-text {
+                        font-size: 0.8125rem;
+                        line-height: 1.5;
                     }
                 }
 
+                /* Mobile responsive design */
                 @media (max-width: 480px) {
                     .author-bio {
+                        border-radius: 0;
                         margin: 2rem 0;
-                        padding: 1rem;
+                        padding: 1.5rem;
+                        position: relative;
+                        width: calc(100% + 1.5rem);
+                        max-width: calc(100vw - 0px);
+                        box-sizing: border-box;
+                    }
+
+                    .author-info {
+                        flex-direction: column;
+                        gap: 0.75rem;
+                        text-align: center;
+                    }
+
+                    .author-avatar {
+                        height: 50px;
+                        width: 50px;
+                        font-size: 1.25rem;
+                    }
+
+                    .author-details h4 {
+                        font-size: 1.125rem;
+                    }
+
+                    .author-title {
+                        font-size: 0.875rem;
+                        margin-top: 0.1875rem;
+                    }
+
+                    .author-bio-text {
+                        font-size: 0.9375rem;
+                        line-height: 1.5;
+                    }
+                }
+
+                /* Extra small mobile */
+                @media (max-width: 360px) {
+                    .author-bio {
+                        width: calc(100% + 1rem);
+                        padding: 1.25rem;
+                    }
+
+                    .author-avatar {
+                        height: 44px;
+                        width: 44px;
+                        font-size: 1.125rem;
+                    }
+
+                    .author-details h4 {
+                        font-size: 0.9375rem;
+                    }
+
+                    .author-title {
+                        font-size: 0.6875rem;
+                    }
+
+                    .author-bio-text {
+                        font-size: 0.75rem;
+                        line-height: 1.3;
                     }
                 }
             </style>

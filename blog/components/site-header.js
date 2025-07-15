@@ -86,12 +86,15 @@ class SiteHeader extends HTMLElement {
                     justify-content: flex-start;
                     line-height: 1.4;
                     min-height: 2rem;
+                    flex-wrap: wrap;
+                    gap: 0.25rem;
                 }
 
                 .breadcrumbs a {
                     color: var(--text-secondary, #64748b);
                     text-decoration: none;
                     transition: var(--transition, all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+                    white-space: nowrap;
                 }
 
                 .breadcrumbs a:hover {
@@ -101,15 +104,73 @@ class SiteHeader extends HTMLElement {
                 .breadcrumbs-separator {
                     color: var(--text-secondary, #64748b);
                     margin: 0 0.5rem;
+                    flex-shrink: 0;
                 }
 
-                @media (max-width: 480px) {
-                    .breadcrumbs {
-                        font-size: 0.75rem;
+                /* Tablet responsive design */
+                @media (max-width: 768px) {
+                    :host {
+                        padding: 0.75rem 0;
                     }
                     
                     .container {
                         padding: 0 1rem;
+                    }
+                    
+                    .breadcrumbs {
+                        font-size: 0.8125rem;
+                        min-height: 1.75rem;
+                    }
+                    
+                    .breadcrumbs-separator {
+                        margin: 0 0.375rem;
+                    }
+                }
+
+                /* Mobile responsive design */
+                @media (max-width: 480px) {
+                    :host {
+                        padding: 0.5rem 0;
+                    }
+                    
+                    .container {
+                        padding: 0 0.75rem;
+                    }
+                    
+                    .breadcrumbs {
+                        font-size: 0.75rem;
+                        min-height: 1.5rem;
+                        line-height: 1.3;
+                    }
+                    
+                    .breadcrumbs-separator {
+                        margin: 0 0.25rem;
+                        font-size: 0.625rem;
+                    }
+                    
+                    .breadcrumbs a {
+                        max-width: 4rem;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+
+                /* Extra small mobile */
+                @media (max-width: 360px) {
+                    .container {
+                        padding: 0 0.5rem;
+                    }
+                    
+                    .breadcrumbs {
+                        font-size: 0.6875rem;
+                    }
+                    
+                    .breadcrumbs a {
+                        max-width: 3rem;
+                    }
+                    
+                    .breadcrumbs-separator {
+                        margin: 0 0.1875rem;
                     }
                 }
             </style>

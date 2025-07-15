@@ -601,6 +601,22 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
             document.body.appendChild(smoothScroll);
         }
 
+        // Add overflow detection for code blocks on mobile
+        function handleCodeBlockOverflow() {
+            const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+            codeBlocks.forEach(block => {
+                if (block.scrollWidth > block.clientWidth) {
+                    block.setAttribute('data-overflowing', 'true');
+                } else {
+                    block.removeAttribute('data-overflowing');
+                }
+            });
+        }
+
+        // Run on load and resize
+        handleCodeBlockOverflow();
+        window.addEventListener('resize', handleCodeBlockOverflow);
+
         console.log('All individual components loaded');
     });
 </script>

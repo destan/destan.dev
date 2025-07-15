@@ -93,9 +93,59 @@ class CalloutBox extends HTMLElement {
                 .callout-content ::slotted(*:not(:last-child)) {
                     margin-bottom: 0.75rem !important;
                 }
+                /* Tablet responsive design */
+                @media (max-width: 768px) {
+                    :host {
+                        margin: 1.5rem 0;
+                        padding: 1.25rem;
+                    }
+                    
+                    .callout-title {
+                        font-size: 0.9375rem;
+                        margin-bottom: 0.75rem;
+                    }
+                    
+                    .callout-content {
+                        font-size: 0.9375rem;
+                        line-height: 1.5;
+                    }
+                }
+
+                /* Mobile responsive design */
                 @media (max-width: 480px) {
                     :host {
+                        border-radius: 0;
                         padding: 1rem;
+                        position: relative;
+                        width: calc(100% + 1.5rem);
+                        max-width: calc(100vw - 0px);
+                        box-sizing: border-box;
+                    }
+                    
+                    .callout-title {
+                        font-size: 1rem;
+                        line-height: 1.3;
+                    }
+                    
+                    .callout-content {
+                        font-size: 0.9375rem;
+                        line-height: 1.5;
+                    }
+                }
+
+                /* Extra small mobile */
+                @media (max-width: 360px) {
+                    :host {
+                        width: calc(100% + 1rem);
+                        padding: 1rem;
+                    }
+                    
+                    .callout-title {
+                        font-size: 0.8125rem;
+                    }
+                    
+                    .callout-content {
+                        font-size: 0.8125rem;
                     }
                 }
             </style>

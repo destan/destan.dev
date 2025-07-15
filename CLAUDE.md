@@ -15,3 +15,8 @@
 ### Correction Protocol
 - When corrected by the user, acknowledge the mistake and search for accurate information
 - Always verify technical claims with authoritative sources before presenting them as fact
+
+### CSS Standards
+
+- Never use negative margins.
+- Prefer flexbox where applicable.

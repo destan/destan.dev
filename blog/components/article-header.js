@@ -81,18 +81,77 @@ class ArticleHeader extends HTMLElement {
                     width: 40px;
                 }
 
+                /* Tablet responsive design */
                 @media (max-width: 768px) {
-                    .article-title {
-                        font-size: 2rem;
+                    :host {
+                        padding: 1.5rem 0;
+                        margin-bottom: 2rem;
+                    }
+
+                    h1 {
+                        font-size: 2.25rem;
+                        line-height: 1.25;
+                    }
+
+                    .article-subtitle {
+                        font-size: 1.125rem;
+                        line-height: 1.4;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .article-meta {
+                        flex-direction: column;
+                        gap: 0.75rem;
+                    }
+                }
+
+                /* Mobile responsive design */
+                @media (max-width: 480px) {
+                    :host {
+                        padding: 1rem 0;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    h1 {
+                        font-size: 1.875rem;
+                        line-height: 1.3;
+                        margin-bottom: 0.75rem;
                     }
 
                     .article-subtitle {
                         font-size: 1rem;
+                        line-height: 1.5;
+                        margin-bottom: 1.25rem;
                     }
 
                     .article-meta {
                         flex-direction: column;
                         gap: 0.5rem;
+                        font-size: 0.8125rem;
+                    }
+
+                    .author-avatar {
+                        height: 36px;
+                        width: 36px;
+                        font-size: 0.875rem;
+                    }
+                }
+
+                /* Extra small mobile */
+                @media (max-width: 360px) {
+                    h1 {
+                        font-size: 1.625rem;
+                        line-height: 1.25;
+                    }
+
+                    .article-subtitle {
+                        font-size: 0.9375rem;
+                    }
+
+                    .author-avatar {
+                        height: 32px;
+                        width: 32px;
+                        font-size: 0.8125rem;
                     }
                 }
             </style>
