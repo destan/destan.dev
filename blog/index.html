@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Destan Sarpkaya's technical blog featuring articles on software development, system design, and programming best practices.">
+    <meta name="keywords" content="blog, software development, programming, system design, technical articles">
+    <meta name="author" content="Destan Sarpkaya">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://destan.dev/blog">
+    <meta property="og:title" content="Destan Sarpkaya's Blog">
+    <meta property="og:description" content="Technical articles on software development, system design, and programming best practices.">
+    <meta property="og:image" content="https://destan.dev/images/DestanSarpkaya.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://destan.dev/blog">
+    <meta property="twitter:title" content="Destan Sarpkaya's Blog">
+    <meta property="twitter:description" content="Technical articles on software development, system design, and programming best practices.">
+    <meta property="twitter:image" content="https://destan.dev/images/DestanSarpkaya.jpg">
+
+    <title>Blog | Destan Sarpkaya</title>
+
+    <!-- Shared CSS -->
+    <link href="shared.css" rel="stylesheet">
+
+    <!-- Preload critical component files -->
+    <link rel="preload" href="components/site-header.js" as="script">
+    <link rel="preload" href="components/site-footer.js" as="script">
+    <link rel="preload" href="components/back-to-top.js" as="script">
+    <link rel="preload" href="components/smooth-scroll.js" as="script">
+
+    <style>
+        .blog-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-post-card {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-post-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .blog-post-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-post-card:hover h2 {
+            color: var(--primary-color);
+        }
+
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-excerpt {
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .blog-post-tag:hover {
+            opacity: 0.8;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-header p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .no-posts {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<site-header>
+    <bread-crumbs>Home > Blog</bread-crumbs>
+    <current-page>Blog</current-page>
+</site-header>
+
+<main class="main-content">
+    <div class="container">
+        <div class="blog-header">
+            <h1>Blog</h1>
+            <p>Technical articles on software development, system design, and programming best practices.</p>
+        </div>
+
+        <div class="blog-grid">
+            <a href="tech/idempotency.html" class="blog-post-card">
+                <h2>Understanding Idempotency</h2>
+                <div class="blog-post-meta">
+                    <time datetime="2025-07-15">July 15, 2025</time> • Tech
+                </div>
+                <div class="blog-post-tags">
+                    <span class="blog-post-tag">idempotency</span>
+                    <span class="blog-post-tag">programming</span>
+                    <span class="blog-post-tag">APIs</span>
+                    <span class="blog-post-tag">system design</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    A comprehensive guide to understanding idempotency in programming, APIs, and system design with practical examples and best practices. Learn how to build reliable and predictable systems that gracefully handle retries and failures.
+                </div>
+                <span class="read-more">Read more →</span>
+            </a>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<back-to-top></back-to-top>
+
+<!-- Load Individual Components -->
+<script src="components/site-header.js"></script>
+<script src="components/site-footer.js"></script>
+<script src="components/back-to-top.js"></script>
+<script src="components/smooth-scroll.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize smooth scrolling
+        if (!document.querySelector('smooth-scroll')) {
+            const smoothScroll = document.createElement('smooth-scroll');
+            smoothScroll.style.display = 'none';
+            document.body.appendChild(smoothScroll);
+        }
+
+        console.log('Blog page components loaded');
+    });
+</script>
+</body>
+</html>
