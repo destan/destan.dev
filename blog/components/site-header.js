@@ -19,7 +19,35 @@ class SiteHeader extends HTMLElement {
     }
 
     render() {
-        const currentPage = this.getAttribute('current-page') || '';
+        // Get breadcrumbs from child element
+        const breadcrumbsElement = this.querySelector('bread-crumbs');
+        const currentPageElement = this.querySelector('current-page');
+        
+        const breadcrumbsText = breadcrumbsElement ? breadcrumbsElement.textContent.trim() : '';
+
+        // Split breadcrumbs by ' > ' and create links
+        const breadcrumbParts = breadcrumbsText ? breadcrumbsText.split(/\s*>\s*/) : [];
+        let breadcrumbsHTML = '';
+
+        if (breadcrumbParts.length > 0) {
+            breadcrumbsHTML = breadcrumbParts.map((part, index) => {
+                const isLast = index === breadcrumbParts.length - 1;
+                const trimmedPart = part.trim();
+                
+                // Generate appropriate links based on breadcrumb text
+                let href = '/';
+                if (trimmedPart.toLowerCase() === 'home') {
+                    href = '/';
+                } else {
+                    // For other breadcrumbs, create a lowercase, hyphenated path
+                    href = '/' + trimmedPart.toLowerCase().replace(/\s+/g, '-');
+                }
+                
+                return `<a href="${href}">${trimmedPart}</a>`;
+            }).join('<span class="breadcrumbs-separator" aria-hidden="true">›</span>');
+        }
+
+        breadcrumbsHTML += `<span class="breadcrumbs-separator" aria-hidden="true">›</span><span aria-current="page">${currentPageElement.textContent.trim()}</span>`
         
         this.shadowRoot.innerHTML = `
             <style>
@@ -92,13 +120,7 @@ class SiteHeader extends HTMLElement {
             </style>
             <div class="container">
                 <nav class="breadcrumbs" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
-                    <span class="breadcrumbs-separator" aria-hidden="true">›</span>
-                    <a href="/blog">Blog</a>
-                    <span class="breadcrumbs-separator" aria-hidden="true">›</span>
-                    <a href="/blog/tech">Tech</a>
-                    <span class="breadcrumbs-separator" aria-hidden="true">›</span>
-                    <span aria-current="page">${currentPage}</span>
+                    ${breadcrumbsHTML}
                 </nav>
             </div>
         `;
