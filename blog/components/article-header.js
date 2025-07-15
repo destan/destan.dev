@@ -25,12 +25,12 @@ class ArticleHeader extends HTMLElement {
             <style>
                 /* Reset and isolation */
                 :host {
+                    border-bottom: 1px solid var(--border-color);
                     display: block;
-                    text-align: center;
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                     margin-bottom: 3rem;
                     padding-bottom: 2rem;
-                    border-bottom: 1px solid var(--border-color);
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    text-align: center;
                 }
 
                 :host *,
@@ -42,31 +42,31 @@ class ArticleHeader extends HTMLElement {
                 }
 
                 .article-title {
-                    font-size: 3rem;
-                    font-weight: 800;
-                    margin-bottom: 1rem;
                     background-clip: text;
                     color: var(--text-primary);
                     font-family: inherit;
+                    font-size: 3rem;
+                    font-weight: 800;
                     line-height: 1.2;
+                    margin-bottom: 1rem;
                 }
 
                 .article-subtitle {
-                    font-size: 1.25rem;
                     color: var(--text-secondary, #64748b);
-                    margin-bottom: 2rem;
-                    font-weight: 400;
                     font-family: inherit;
+                    font-size: 1.25rem;
+                    font-weight: 400;
                     line-height: 1.4;
+                    margin-bottom: 2rem;
                 }
 
                 .article-meta {
-                    display: flex;
-                    justify-content: center;
                     align-items: center;
-                    gap: 1rem;
-                    font-size: 0.875rem;
                     color: var(--text-secondary, #64748b);
+                    display: flex;
+                    font-size: 0.875rem;
+                    gap: 1rem;
+                    justify-content: center;
                 }
 
                 .author-avatar {
@@ -107,7 +107,7 @@ class ArticleHeader extends HTMLElement {
                 <div class="article-meta">
                     <div class="author-avatar" aria-hidden="true">${authorInitials}</div>
                     <div>
-                        <div>By <strong><slot name="author">Default Author</slot></strong></div>
+                        <div>By <strong><slot name="author">Destan Sarpkaya</slot></strong></div>
                         ${date ? `<time datetime="${date}">${this.formatDate(date)}</time>` : ''}
                     </div>
                 </div>

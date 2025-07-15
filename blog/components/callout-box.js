@@ -27,7 +27,7 @@ class CalloutBox extends HTMLElement {
             info: {
                 background: 'linear-gradient(135deg, #dbeafe, #e0f2fe)',
                 border: '#93c5fd',
-                titleColor: 'var(--primary-color, #2563eb)'
+                titleColor: '#2563eb'
             },
             warning: {
                 background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
@@ -53,17 +53,14 @@ class CalloutBox extends HTMLElement {
                 /* Reset and isolation */
                 :host {
                     all: initial;
-                    display: block;
                     background: ${style.background};
                     border: 1px solid ${style.border};
                     border-radius: 8px;
-                    padding: 1rem;
-                    margin: 2rem 0;
                     box-sizing: border-box;
+                    display: block;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --text-primary: #1e293b;
+                    margin: 2rem 0;
+                    padding: 1rem;
                 }
 
                 :host *,
@@ -75,18 +72,18 @@ class CalloutBox extends HTMLElement {
                 }
 
                 .callout-title {
-                    font-weight: 600;
                     color: ${style.titleColor};
-                    margin-bottom: 0.5rem;
-                    font-size: 1rem;
                     font-family: inherit;
+                    font-size: 1rem;
+                    font-weight: 600;
                     line-height: 1.4;
+                    margin-bottom: 0.5rem;
                 }
 
                 .callout-content {
                     color: var(--text-primary, #1e293b);
-                    line-height: 1.6;
                     font-family: inherit;
+                    line-height: 1.6;
                 }
 
                 /* Override shared.css paragraph styles */

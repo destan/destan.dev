@@ -16,19 +16,14 @@ class SiteFooter extends HTMLElement {
                 /* Reset and isolation */
                 :host {
                     all: initial;
-                    display: block;
                     background: #f8fafc;
                     border-top: 1px solid #e2e8f0;
+                    color: #64748b;
+                    display: block;
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    margin-top: 4rem;
                     padding: 2rem 0;
                     text-align: center;
-                    color: #64748b;
-                    margin-top: 4rem;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --surface: #f8fafc;
-                    --border-color: #e2e8f0;
-                    --text-secondary: #64748b;
                 }
 
                 :host *,
@@ -40,16 +35,16 @@ class SiteFooter extends HTMLElement {
                 }
 
                 .container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 0 1.5rem;
                     font-family: inherit;
+                    margin: 0 auto;
+                    max-width: 800px;
+                    padding: 0 1.5rem;
                 }
 
                 p {
-                    margin: 0;
-                    line-height: 1.5;
                     font-family: inherit;
+                    line-height: 1.5;
+                    margin: 0;
                 }
 
                 @media (max-width: 768px) {

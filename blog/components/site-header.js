@@ -55,18 +55,11 @@ class SiteHeader extends HTMLElement {
                 /* Reset and isolation */
                 :host {
                     all: initial;
-                    display: block;
-                    background: #f8fafc;
+                    background: var(--surface);
                     border-bottom: 1px solid #e2e8f0;
-                    padding: 1rem 0;
+                    display: block;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --surface: #f8fafc;
-                    --border-color: #e2e8f0;
-                    --primary-color: #2563eb;
-                    --text-secondary: #64748b;
-                    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    padding: 1rem 0;
                 }
 
                 :host *,
@@ -78,19 +71,19 @@ class SiteHeader extends HTMLElement {
                 }
 
                 .container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 0 1.5rem;
                     font-family: inherit;
+                    margin: 0 auto;
+                    max-width: 800px;
+                    padding: 0 1.5rem;
                 }
 
                 .breadcrumbs {
-                    display: flex;
                     align-items: center;
-                    justify-content: flex-start;
-                    font-size: 0.875rem;
                     color: var(--text-secondary, #64748b);
+                    display: flex;
                     font-family: inherit;
+                    font-size: 0.875rem;
+                    justify-content: flex-start;
                     line-height: 1.4;
                     min-height: 2rem;
                 }
@@ -106,8 +99,8 @@ class SiteHeader extends HTMLElement {
                 }
 
                 .breadcrumbs-separator {
-                    margin: 0 0.5rem;
                     color: var(--text-secondary, #64748b);
+                    margin: 0 0.5rem;
                 }
 
                 @media (max-width: 480px) {

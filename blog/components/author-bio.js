@@ -31,14 +31,6 @@ class AuthorBio extends HTMLElement {
                     all: initial;
                     display: block;
                     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --surface: #f8fafc;
-                    --border-color: #e2e8f0;
-                    --primary-color: #2563eb;
-                    --accent-color: #f59e0b;
-                    --text-primary: #1e293b;
-                    --text-secondary: #64748b;
                 }
 
                 :host *,
@@ -51,61 +43,61 @@ class AuthorBio extends HTMLElement {
 
                 .author-bio {
                     background: var(--surface, #f8fafc);
-                    border-radius: 12px;
-                    padding: 2rem;
-                    margin: 3rem 0;
                     border: 1px solid var(--border-color, #e2e8f0);
+                    border-radius: 12px;
                     font-family: inherit;
+                    margin: 3rem 0;
+                    padding: 2rem;
                 }
 
                 .author-info {
-                    display: flex;
                     align-items: center;
+                    display: flex;
                     gap: 1rem;
                     margin-bottom: 1rem;
                 }
 
                 .author-avatar {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--accent-color, #f59e0b));
-                    display: flex;
                     align-items: center;
-                    justify-content: center;
+                    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--accent-color, #f59e0b));
+                    border-radius: 50%;
                     color: white;
-                    font-weight: 600;
-                    font-size: 1.5rem;
+                    display: flex;
                     flex-shrink: 0;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    height: 60px;
+                    justify-content: center;
+                    width: 60px;
                 }
 
                 .author-details h4 {
-                    margin: 0;
                     color: var(--text-primary, #1e293b);
                     font-size: 1.125rem;
                     font-weight: 600;
                     line-height: 1.4;
+                    margin: 0;
                 }
 
                 .author-title {
                     color: var(--text-secondary, #64748b);
                     font-size: 0.875rem;
-                    margin-top: 0.25rem;
                     font-weight: 400;
+                    margin-top: 0.25rem;
                 }
 
                 .author-bio-text {
                     color: var(--text-primary, #1e293b);
-                    line-height: 1.6;
                     font-size: 0.875rem;
+                    line-height: 1.6;
                     margin: 0;
                 }
 
                 @media (max-width: 768px) {
                     .author-info {
                         flex-direction: column;
-                        text-align: center;
                         gap: 1rem;
+                        text-align: center;
                     }
 
                     .author-bio {
@@ -115,8 +107,8 @@ class AuthorBio extends HTMLElement {
 
                 @media (max-width: 480px) {
                     .author-bio {
-                        padding: 1rem;
                         margin: 2rem 0;
+                        padding: 1rem;
                     }
                 }
             </style>

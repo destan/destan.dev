@@ -21,17 +21,11 @@ class BackToTop extends HTMLElement {
                 /* Reset and isolation */
                 :host {
                     all: initial;
-                    position: fixed;
                     bottom: 2rem;
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    position: fixed;
                     right: 2rem;
                     z-index: 1000;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-                    
-                    /* Re-declare CSS variables since all: initial resets them */
-                    --primary-color: #2563eb;
-                    --primary-dark: #1d4ed8;
-                    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-                    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 }
 
                 :host *,
@@ -43,29 +37,29 @@ class BackToTop extends HTMLElement {
                 }
 
                 .back-to-top-button {
-                    width: 50px;
-                    height: 50px;
+                    align-items: center;
                     background: var(--primary-color, #2563eb);
-                    color: white;
                     border: none;
                     border-radius: 50%;
+                    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+                    color: white;
                     cursor: pointer;
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 1.25rem;
                     font-family: inherit;
+                    font-size: 1.25rem;
                     font-weight: 600;
+                    height: 50px;
+                    justify-content: center;
                     line-height: 1;
-                    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
-                    transform: translateY(100px);
                     opacity: 0;
+                    transform: translateY(100px);
                     transition: var(--transition, all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+                    width: 50px;
                 }
 
                 .back-to-top-button.visible {
-                    transform: translateY(0);
                     opacity: 1;
+                    transform: translateY(0);
                 }
 
                 .back-to-top-button:hover {
@@ -85,8 +79,8 @@ class BackToTop extends HTMLElement {
                     }
 
                     .back-to-top-button {
-                        width: 45px;
                         height: 45px;
+                        width: 45px;
                     }
                 }
 
