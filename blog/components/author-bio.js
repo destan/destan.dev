@@ -30,7 +30,7 @@ class AuthorBio extends HTMLElement {
                 :host {
                     all: initial;
                     display: block;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                 }
 
                 :host *,
@@ -116,7 +116,7 @@ class AuthorBio extends HTMLElement {
                 <div class="author-info">
                     <div class="author-avatar" aria-hidden="true">${authorInitials}</div>
                     <div class="author-details">
-                        <h4>${author}</h4>
+                        <strong>${author}</strong>
                         <div class="author-title">${title}</div>
                     </div>
                 </div>

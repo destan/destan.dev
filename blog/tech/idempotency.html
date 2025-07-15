@@ -10,8 +10,9 @@
     <!-- SEO-friendly fallback content for web components -->
     <noscript>
         <style>
-            .fallback-content { display: block !important; }
-            author-bio, callout-box, site-header, site-footer { display: none; }
+            code[class*=language-], pre[class*=language-] {
+                text-shadow: none !important;
+            }
         </style>
     </noscript>
 
@@ -65,13 +66,14 @@
             <article-header>
                 <h1 slot="title">Understanding Idempotency</h1>
                 <p slot="subtitle">A Developer's Complete Guide to Building Reliable and Predictable Systems</p>
-                <time datetime="2025-06-20" slot="date">2025-06-20</time>
+                <time datetime="2025-07-15" slot="date">2025-07-15</time>
             </article-header>
 
             <section class="content-section">
                 <p>In the world of distributed systems and API design, few concepts are as crucial yet misunderstood as <strong>idempotency</strong>. Whether you're building REST APIs, designing database operations, or architecting microservices, understanding idempotency can be the difference between a robust system and one plagued by inconsistencies and errors.</p>
 
-                <callout-box title="🎯 What You'll Learn" type="info">
+                <callout-box type="info">
+                    <p>🎯 What You'll Learn</p>
                     <p>This comprehensive guide covers idempotency from basic concepts to advanced implementation patterns, complete with real-world examples and best practices you can apply immediately.</p>
                 </callout-box>
             </section>
@@ -549,7 +551,8 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
                     <li><strong>Document idempotency behavior</strong> - Make it clear to API consumers</li>
                 </ol>
 
-                <callout-box title="💡 Key Takeaway" type="success">
+                <callout-box type="success">
+                    <title>💡 Key Takeaway</title>
                     <p>Idempotency isn't just about preventing duplicate operations—it's about building systems that are predictable, reliable, and safe to retry. When in doubt, make your operations idempotent.</p>
                 </callout-box>
             </section>

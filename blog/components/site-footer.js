@@ -20,7 +20,7 @@ class SiteFooter extends HTMLElement {
                     border-top: 1px solid #e2e8f0;
                     color: #64748b;
                     display: block;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                     margin-top: 4rem;
                     padding: 2rem 0;
                     text-align: center;

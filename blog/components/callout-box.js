@@ -5,7 +5,7 @@ class CalloutBox extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['title', 'type'];
+        return ['type'];
     }
 
     connectedCallback() {
@@ -19,9 +19,7 @@ class CalloutBox extends HTMLElement {
     }
 
     render() {
-        const title = this.getAttribute('title') || '';
         const type = this.getAttribute('type') || 'info';
-        
         // Define color schemes for different types
         const typeStyles = {
             info: {
@@ -47,10 +45,10 @@ class CalloutBox extends HTMLElement {
         };
 
         const style = typeStyles[type] || typeStyles.info;
-        
+        // Find a <title> child for backward compatibility
+        const title = this.querySelector('title')?.textContent;
         this.shadowRoot.innerHTML = `
             <style>
-                /* Reset and isolation */
                 :host {
                     all: initial;
                     background: ${style.background};
@@ -58,11 +56,10 @@ class CalloutBox extends HTMLElement {
                     border-radius: 8px;
                     box-sizing: border-box;
                     display: block;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                     margin: 2rem 0;
                     padding: 1rem;
                 }
-
                 :host *,
                 :host *::before,
                 :host *::after {
@@ -70,7 +67,6 @@ class CalloutBox extends HTMLElement {
                     margin: 0;
                     padding: 0;
                 }
-
                 .callout-title {
                     color: ${style.titleColor};
                     font-family: inherit;
@@ -79,39 +75,33 @@ class CalloutBox extends HTMLElement {
                     line-height: 1.4;
                     margin-bottom: 0.5rem;
                 }
-
                 .callout-content {
                     color: var(--text-primary, #1e293b);
                     font-family: inherit;
                     line-height: 1.6;
                 }
-
-                /* Override shared.css paragraph styles */
                 .callout-content ::slotted(p) {
                     margin: 0 !important;
                     margin-bottom: 0.5rem !important;
                 }
-
                 .callout-content ::slotted(p:last-child) {
                     margin-bottom: 0 !important;
                 }
-
-                /* Ensure proper spacing for any content */
                 .callout-content ::slotted(*) {
                     margin-top: 0 !important;
                 }
-
                 .callout-content ::slotted(*:not(:last-child)) {
                     margin-bottom: 0.75rem !important;
                 }
-
                 @media (max-width: 480px) {
                     :host {
                         padding: 1rem;
                     }
                 }
             </style>
-            ${title ? `<div class="callout-title">${title}</div>` : ''}
+            <div class="callout-title">
+                ${title ? title : '<slot name="title"></slot>'}
+            </div>
             <div class="callout-content">
                 <slot></slot>
             </div>

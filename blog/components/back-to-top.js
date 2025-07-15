@@ -22,7 +22,7 @@ class BackToTop extends HTMLElement {
                 :host {
                     all: initial;
                     bottom: 2rem;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                     position: fixed;
                     right: 2rem;
                     z-index: 1000;

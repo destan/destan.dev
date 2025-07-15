@@ -10,13 +10,13 @@ class ArticleHeader extends HTMLElement {
     }
 
     render() {
-        // Read content from child elements using their slot name.
-        // The ?. is optional chaining, which prevents errors if the element doesn't exist.
+
+        const title = this.querySelector('[slot="title"]')?.textContent || '';
+        const subTitle = this.querySelector('[slot="subtitle"]')?.textContent || '';
         const date = this.querySelector('[slot="date"]')?.textContent || '';
         const author = this.querySelector('[slot="author"]')?.textContent || 'Destan Sarpkaya';
         let authorInitials = this.querySelector('[slot="author-initials"]')?.textContent || '';
 
-        // Smartly generate initials if they are not provided, making the component easier to use.
         if (!authorInitials && author) {
             authorInitials = author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
         }
@@ -27,9 +27,9 @@ class ArticleHeader extends HTMLElement {
                 :host {
                     border-bottom: 1px solid var(--border-color);
                     display: block;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                     margin-bottom: 3rem;
-                    padding-bottom: 2rem;
+                    padding: 2rem 0;
                     text-align: center;
                 }
 
@@ -41,7 +41,7 @@ class ArticleHeader extends HTMLElement {
                     padding: 0;
                 }
 
-                .article-title {
+                h1 {
                     background-clip: text;
                     color: var(--text-primary);
                     font-family: inherit;
@@ -97,17 +97,12 @@ class ArticleHeader extends HTMLElement {
                 }
             </style>
             <header>
-                <div class="article-title">
-                    <!-- This slot will be filled by the element with slot="title" -->
-                    <slot name="title">A Default Title</slot>
-                </div>
-                <div class="article-subtitle">
-                    <slot name="subtitle"></slot>
-                </div>
+                <h1>${title}</h1>
+                <p class="article-subtitle">${subTitle}</p>
                 <div class="article-meta">
                     <div class="author-avatar" aria-hidden="true">${authorInitials}</div>
                     <div>
-                        <div>By <strong><slot name="author">Destan Sarpkaya</slot></strong></div>
+                        <div>By <strong><slot rel="author"  name="author">Destan Sarpkaya</slot></strong></div>
                         ${date ? `<time datetime="${date}">${this.formatDate(date)}</time>` : ''}
                     </div>
                 </div>

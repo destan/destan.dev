@@ -58,7 +58,7 @@ class SiteHeader extends HTMLElement {
                     background: var(--surface);
                     border-bottom: 1px solid #e2e8f0;
                     display: block;
-                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-family: inherit;
                     padding: 1rem 0;
                 }
 
