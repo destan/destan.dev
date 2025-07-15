@@ -127,7 +127,6 @@ class AuthorBio extends HTMLElement {
                         margin: 2rem 0;
                         padding: 1.5rem;
                         position: relative;
-                        width: calc(100% + 1.5rem);
                         max-width: calc(100vw - 0px);
                         box-sizing: border-box;
                     }
@@ -162,7 +161,6 @@ class AuthorBio extends HTMLElement {
                 /* Extra small mobile */
                 @media (max-width: 360px) {
                     .author-bio {
-                        width: calc(100% + 1rem);
                         padding: 1.25rem;
                     }
 

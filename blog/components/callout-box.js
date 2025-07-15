@@ -117,7 +117,6 @@ class CalloutBox extends HTMLElement {
                         border-radius: 0;
                         padding: 1rem;
                         position: relative;
-                        width: calc(100% + 1.5rem);
                         max-width: calc(100vw - 0px);
                         box-sizing: border-box;
                     }
@@ -136,7 +135,6 @@ class CalloutBox extends HTMLElement {
                 /* Extra small mobile */
                 @media (max-width: 360px) {
                     :host {
-                        width: calc(100% + 1rem);
                         padding: 1rem;
                     }
                     
