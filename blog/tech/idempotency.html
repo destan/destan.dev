@@ -6,7 +6,7 @@
     <meta name="description" content="A comprehensive guide to understanding idempotency in programming, APIs, and system design with practical examples and best practices.">
     <meta name="keywords" content="idempotency, programming, APIs, system design, REST, HTTP, software engineering">
     <meta name="author" content="Destan Sarpkaya">
-    
+
     <!-- SEO-friendly fallback content for web components -->
     <noscript>
         <style>
@@ -33,15 +33,17 @@
 
     <!-- Shared CSS -->
     <link href="../shared.css" rel="stylesheet">
-    
-    <!-- Preload critical component bundle -->
-    <link rel="preload" href="../components/components-bundle.js" as="script">
+
+    <!-- Preload critical component files -->
+    <link rel="preload" href="../components/site-header.js" as="script">
+    <link rel="preload" href="../components/article-header.js" as="script">
     <link rel="preload" href="../components/syntax-highlighter.js" as="script">
     <link rel="preload" href="../components/site-footer.js" as="script">
     <link rel="preload" href="../components/back-to-top.js" as="script">
     <link rel="preload" href="../components/callout-box.js" as="script">
     <link rel="preload" href="../components/author-bio.js" as="script">
-    
+    <link rel="preload" href="../components/smooth-scroll.js" as="script">
+
     <!-- Load Prism.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
@@ -54,12 +56,12 @@
 <main class="main-content">
     <div class="container">
         <article>
-            <article-header 
-                title="Understanding Idempotency"
-                subtitle="A Developer's Complete Guide to Building Reliable and Predictable Systems"
-                date="2025-06-20"
-                author="Destan Sarpkaya"
-                author-initials="SC">
+            <article-header>
+                <h1 slot="title">Understanding Idempotency</h1>
+                <p slot="subtitle">A Developer's Complete Guide to Building Reliable and Predictable Systems</p>
+                <span slot="date">2025-06-20</span>
+                <span slot="author">Destan Sarpkaya</span>
+                <span slot="author-initials">DS</span>
             </article-header>
 
             <section class="content-section">
@@ -571,39 +573,46 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
 
 <back-to-top></back-to-top>
 
-<!-- Optimized Component Loading -->
-<script src="../components/components-bundle.js"></script>
+<!-- Load Individual Components -->
+<script src="../components/site-header.js"></script>
+<script src="../components/article-header.js"></script>
 <script src="../components/syntax-highlighter.js"></script>
 <script src="../components/site-footer.js"></script>
 <script src="../components/back-to-top.js"></script>
 <script src="../components/callout-box.js"></script>
 <script src="../components/author-bio.js"></script>
+<script src="../components/smooth-scroll.js"></script>
 
 <script>
-// Components will load automatically
+    // Components will load automatically
 
-// Initialize syntax highlighting immediately
-document.addEventListener('DOMContentLoaded', () => {
-    // Ensure syntax highlighter is created and working
-    const initSyntaxHighlighting = () => {
-        if (!document.querySelector('syntax-highlighter') && window.customElements.get('syntax-highlighter')) {
-            const highlighter = document.createElement('syntax-highlighter');
-            highlighter.style.display = 'none';
-            document.body.appendChild(highlighter);
-            console.log('Syntax highlighter initialized');
+    // Initialize syntax highlighting immediately
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ensure syntax highlighter is created and working
+        const initSyntaxHighlighting = () => {
+            if (!document.querySelector('syntax-highlighter') && window.customElements.get('syntax-highlighter')) {
+                const highlighter = document.createElement('syntax-highlighter');
+                highlighter.style.display = 'none';
+                document.body.appendChild(highlighter);
+                console.log('Syntax highlighter initialized');
+            }
+        };
+
+        // Try immediate initialization
+        initSyntaxHighlighting();
+
+        // Also try after a short delay in case of loading timing issues
+        setTimeout(initSyntaxHighlighting, 100);
+
+        // Initialize smooth scrolling
+        if (!document.querySelector('smooth-scroll')) {
+            const smoothScroll = document.createElement('smooth-scroll');
+            smoothScroll.style.display = 'none';
+            document.body.appendChild(smoothScroll);
         }
-    };
-    
-    // Try immediate initialization
-    initSyntaxHighlighting();
-    
-    // Also try after a short delay in case of loading timing issues
-    setTimeout(initSyntaxHighlighting, 100);
-    
-    
-    // All components are now loaded via components-bundle.js
-    console.log('All components loaded via bundle');
-});
+
+        console.log('All individual components loaded');
+    });
 </script>
 </body>
 </html>

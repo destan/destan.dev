@@ -1,28 +1,24 @@
 class ArticleHeader extends HTMLElement {
-    static get observedAttributes() {
-        return ['title', 'subtitle', 'date', 'author', 'author-initials'];
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
+        // We render here to ensure the component's children (for slots) are available in the DOM
         this.render();
     }
 
-    attributeChangedCallback() {
-        if (this.shadowRoot) {
-            this.render();
-        }
-    }
-
     render() {
-        const title = this.getAttribute('title') || '';
-        const subtitle = this.getAttribute('subtitle') || '';
-        const date = this.getAttribute('date') || '';
-        const author = this.getAttribute('author') || 'Destan Sarpkaya';
-        const authorInitials = this.getAttribute('author-initials') || 'SC';
+        // Read content from child elements using their slot name.
+        // The ?. is optional chaining, which prevents errors if the element doesn't exist.
+        const date = this.querySelector('[slot="date"]')?.textContent || '';
+        const author = this.querySelector('[slot="author"]')?.textContent || 'Destan Sarpkaya';
+        let authorInitials = this.querySelector('[slot="author-initials"]')?.textContent || '';
 
-        // Create shadow DOM
-        if (!this.shadowRoot) {
-            this.attachShadow({ mode: 'open' });
+        // Smartly generate initials if they are not provided, making the component easier to use.
+        if (!authorInitials && author) {
+            authorInitials = author.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
         }
 
         this.shadowRoot.innerHTML = `
@@ -82,20 +78,6 @@ class ArticleHeader extends HTMLElement {
                     gap: 1rem;
                     font-size: 0.875rem;
                     color: var(--text-secondary, #64748b);
-                    font-family: inherit;
-                    line-height: 1.4;
-                }
-
-                .author-info {
-                    font-family: inherit;
-                }
-
-                .author-info div {
-                    font-family: inherit;
-                }
-
-                time {
-                    font-family: inherit;
                 }
 
                 .author-avatar {
@@ -126,12 +108,17 @@ class ArticleHeader extends HTMLElement {
                 }
             </style>
             <header>
-                <h1 class="article-title">${title}</h1>
-                ${subtitle ? `<p class="article-subtitle">${subtitle}</p>` : ''}
+                <div class="article-title">
+                    <!-- This slot will be filled by the element with slot="title" -->
+                    <slot name="title">A Default Title</slot>
+                </div>
+                <div class="article-subtitle">
+                    <slot name="subtitle"></slot>
+                </div>
                 <div class="article-meta">
                     <div class="author-avatar" aria-hidden="true">${authorInitials}</div>
                     <div>
-                        <div>By <strong>${author}</strong></div>
+                        <div>By <strong><slot name="author">Default Author</slot></strong></div>
                         ${date ? `<time datetime="${date}">${this.formatDate(date)}</time>` : ''}
                     </div>
                 </div>
@@ -140,12 +127,15 @@ class ArticleHeader extends HTMLElement {
     }
 
     formatDate(dateString) {
+        if (!dateString) return '';
         try {
             const date = new Date(dateString);
+            // Add timeZone to prevent off-by-one-day errors depending on the user's location
             return date.toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
-                day: 'numeric'
+                day: 'numeric',
+                timeZone: 'UTC'
             });
         } catch {
             return dateString;
