@@ -18,7 +18,6 @@ class ComponentLoader {
             'author-bio': { file: 'author-bio.js', priority: 'medium' },
             'callout-box': { file: 'callout-box.js', priority: 'medium' },
             'back-to-top': { file: 'back-to-top.js', priority: 'low' },
-            'syntax-highlighter': { file: 'syntax-highlighter.js', priority: 'high' }, // Critical for code styling
             'smooth-scroll': { file: 'smooth-scroll.js', priority: 'high' }
         };
     }
@@ -235,7 +234,7 @@ class ComponentLoader {
      * Check if a component is critical for initial render
      */
     isCriticalComponent(filename) {
-        const criticalFiles = ['site-header.js', 'article-header.js', 'smooth-scroll.js', 'syntax-highlighter.js'];
+        const criticalFiles = ['site-header.js', 'article-header.js', 'smooth-scroll.js'];
         return criticalFiles.includes(filename);
     }
 

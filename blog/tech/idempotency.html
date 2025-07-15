@@ -37,7 +37,6 @@
     <!-- Preload critical component files -->
     <link rel="preload" href="../components/site-header.js" as="script">
     <link rel="preload" href="../components/article-header.js" as="script">
-    <link rel="preload" href="../components/syntax-highlighter.js" as="script">
     <link rel="preload" href="../components/site-footer.js" as="script">
     <link rel="preload" href="../components/back-to-top.js" as="script">
     <link rel="preload" href="../components/callout-box.js" as="script">
@@ -45,9 +44,9 @@
     <link rel="preload" href="../components/smooth-scroll.js" as="script">
 
     <!-- Load Prism.js for syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-twilight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 </head>
 <body>
@@ -579,7 +578,6 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
 <!-- Load Individual Components -->
 <script src="../components/site-header.js"></script>
 <script src="../components/article-header.js"></script>
-<script src="../components/syntax-highlighter.js"></script>
 <script src="../components/site-footer.js"></script>
 <script src="../components/back-to-top.js"></script>
 <script src="../components/callout-box.js"></script>
@@ -589,23 +587,7 @@ async function createUniqueUsername(baseUsername, idempotencyKey) {
 <script>
     // Components will load automatically
 
-    // Initialize syntax highlighting immediately
     document.addEventListener('DOMContentLoaded', () => {
-        // Ensure syntax highlighter is created and working
-        const initSyntaxHighlighting = () => {
-            if (!document.querySelector('syntax-highlighter') && window.customElements.get('syntax-highlighter')) {
-                const highlighter = document.createElement('syntax-highlighter');
-                highlighter.style.display = 'none';
-                document.body.appendChild(highlighter);
-                console.log('Syntax highlighter initialized');
-            }
-        };
-
-        // Try immediate initialization
-        initSyntaxHighlighting();
-
-        // Also try after a short delay in case of loading timing issues
-        setTimeout(initSyntaxHighlighting, 100);
 
         // Initialize smooth scrolling
         if (!document.querySelector('smooth-scroll')) {

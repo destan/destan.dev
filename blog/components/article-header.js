@@ -70,15 +70,15 @@ class ArticleHeader extends HTMLElement {
                 }
 
                 .author-avatar {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--accent-color, #f59e0b));
-                    display: flex;
                     align-items: center;
-                    justify-content: center;
+                    background: var(--primary-color);
+                    border-radius: 50%;
                     color: white;
+                    display: flex;
                     font-weight: 600;
+                    height: 40px;
+                    justify-content: center;
+                    width: 40px;
                 }
 
                 @media (max-width: 768px) {
