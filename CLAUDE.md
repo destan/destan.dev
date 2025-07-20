@@ -20,3 +20,9 @@
 
 - Never use negative margins.
 - Prefer flexbox where applicable.
+
+## Development Best Practices
+
+- Always adhere to HTML, CSS and Javascript best practices and use the latest stable versions.
+- When creating or updating a web component, adhere to web component rules and best practices.
+- Note that this is a static website so do not use mutation listeners.

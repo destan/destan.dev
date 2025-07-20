@@ -80,25 +80,6 @@
             margin-bottom: 1rem;
         }
 
-        .blog-post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .blog-post-tag {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-            text-decoration: none;
-        }
-
-        .blog-post-tag:hover {
-            opacity: 0.8;
-        }
 
         .read-more {
             color: var(--primary-color);
@@ -153,12 +134,7 @@
                 <div class="blog-post-meta">
                     <time datetime="2025-07-15">July 15, 2025</time> • Tech
                 </div>
-                <div class="blog-post-tags">
-                    <span class="blog-post-tag">idempotency</span>
-                    <span class="blog-post-tag">programming</span>
-                    <span class="blog-post-tag">APIs</span>
-                    <span class="blog-post-tag">system design</span>
-                </div>
+                <labels-component>idempotency, system design, programming</labels-component>
                 <div class="blog-post-excerpt">
                     A comprehensive guide to understanding idempotency in programming, APIs, and system design with practical examples and best practices. Learn how to build reliable and predictable systems that gracefully handle retries and failures.
                 </div>
@@ -175,6 +151,7 @@
 <!-- Load Individual Components -->
 <script src="components/site-header.js"></script>
 <script src="components/site-footer.js"></script>
+<script src="components/labels.js"></script>
 <script src="components/back-to-top.js"></script>
 <script src="components/smooth-scroll.js"></script>
 
