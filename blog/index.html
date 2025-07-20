@@ -108,9 +108,91 @@
             font-style: italic;
         }
 
+        /* Label Filter Styles */
+        .label-filter {
+            margin-top: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--surface);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .clear-button {
+            padding: 0.75rem 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .clear-button:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+        }
+
+        .filter-status {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Filtered state styles */
+        .blog-post-card.filtered-out {
+            display: none;
+        }
+
+        .labels-container .label.highlighted {
+            background: var(--primary-color) !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
         @media (max-width: 768px) {
             .blog-post-card {
                 padding: 1rem;
+            }
+            
+            .label-filter {
+                margin-top: 1.5rem;
+            }
+            
+            .filter-input-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .clear-button {
+                align-self: stretch;
             }
         }
     </style>
@@ -126,6 +208,15 @@
         <div class="blog-header">
             <h1>Blog</h1>
             <p>Technical articles on software development, system design, and programming best practices.</p>
+            
+            <!-- Label Filter -->
+            <div class="label-filter">
+                <div class="filter-input-group">
+                    <input type="text" id="labelFilter" placeholder="Filter by label (e.g., programming, APIs)" class="filter-input">
+                    <button id="clearFilter" class="clear-button" style="display: none;">Clear</button>
+                </div>
+                <div id="filterStatus" class="filter-status" style="display: none;"></div>
+            </div>
         </div>
 
         <div class="blog-grid">
@@ -164,8 +255,144 @@
             document.body.appendChild(smoothScroll);
         }
 
+        // Initialize label filter functionality
+        initializeLabelFilter();
+
         console.log('Blog page components loaded');
     });
+
+    function initializeLabelFilter() {
+        const filterInput = document.getElementById('labelFilter');
+        const clearButton = document.getElementById('clearFilter');
+        const filterStatus = document.getElementById('filterStatus');
+        const blogPosts = document.querySelectorAll('.blog-post-card');
+
+        let currentFilter = '';
+
+        // Function to normalize labels for comparison
+        function normalizeLabel(label) {
+            return label.toLowerCase().trim().replace(/\s+/g, '-');
+        }
+
+        // Function to get labels from a blog post
+        function getPostLabels(postElement) {
+            const labelsComponent = postElement.querySelector('labels-component');
+            if (!labelsComponent) return [];
+            
+            const labelText = labelsComponent.textContent.trim();
+            if (!labelText) return [];
+            
+            return labelText.split(',').map(label => normalizeLabel(label));
+        }
+
+        // Function to highlight matching labels in posts
+        function highlightLabels(filterTerm) {
+            blogPosts.forEach(post => {
+                const labelsComponent = post.querySelector('labels-component');
+                if (labelsComponent && labelsComponent.shadowRoot) {
+                    const labelElements = labelsComponent.shadowRoot.querySelectorAll('.label');
+                    labelElements.forEach(labelEl => {
+                        const labelText = normalizeLabel(labelEl.textContent);
+                        if (filterTerm && labelText.includes(normalizeLabel(filterTerm))) {
+                            labelEl.classList.add('highlighted');
+                        } else {
+                            labelEl.classList.remove('highlighted');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Function to filter posts
+        function filterPosts(filterTerm) {
+            const normalizedFilter = normalizeLabel(filterTerm);
+            let visibleCount = 0;
+
+            blogPosts.forEach(post => {
+                const postLabels = getPostLabels(post);
+                const hasMatchingLabel = postLabels.some(label => 
+                    label.includes(normalizedFilter)
+                );
+
+                if (!filterTerm || hasMatchingLabel) {
+                    post.classList.remove('filtered-out');
+                    visibleCount++;
+                } else {
+                    post.classList.add('filtered-out');
+                }
+            });
+
+            // Update UI feedback
+            updateFilterStatus(filterTerm, visibleCount);
+            highlightLabels(filterTerm);
+        }
+
+        // Function to update filter status
+        function updateFilterStatus(filterTerm, visibleCount) {
+            if (filterTerm) {
+                filterStatus.textContent = `Showing ${visibleCount} post${visibleCount !== 1 ? 's' : ''} with "${filterTerm}"`;
+                filterStatus.style.display = 'block';
+                clearButton.style.display = 'block';
+            } else {
+                filterStatus.style.display = 'none';
+                clearButton.style.display = 'none';
+            }
+        }
+
+        // Function to clear filter
+        function clearFilter() {
+            filterInput.value = '';
+            currentFilter = '';
+            filterPosts('');
+        }
+
+        // Function to make labels clickable
+        function makeLabelsClickable() {
+            // Wait for labels components to be fully rendered
+            setTimeout(() => {
+                blogPosts.forEach(post => {
+                    const labelsComponent = post.querySelector('labels-component');
+                    if (labelsComponent && labelsComponent.shadowRoot) {
+                        const labelElements = labelsComponent.shadowRoot.querySelectorAll('.label');
+                        labelElements.forEach(labelEl => {
+                            labelEl.style.cursor = 'pointer';
+                            labelEl.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const labelText = labelEl.textContent.trim();
+                                filterInput.value = labelText;
+                                currentFilter = labelText;
+                                filterPosts(labelText);
+                            });
+                        });
+                    }
+                });
+            }, 100);
+        }
+
+        // Event listeners
+        filterInput.addEventListener('input', (e) => {
+            currentFilter = e.target.value;
+            filterPosts(currentFilter);
+        });
+
+        clearButton.addEventListener('click', clearFilter);
+
+        // Handle Enter key
+        filterInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                currentFilter = filterInput.value;
+                filterPosts(currentFilter);
+            }
+        });
+
+        // Make labels clickable after components load
+        makeLabelsClickable();
+        
+        // Also try again after a longer delay to ensure components are fully loaded
+        setTimeout(makeLabelsClickable, 500);
+    }
 </script>
 </body>
 </html>
