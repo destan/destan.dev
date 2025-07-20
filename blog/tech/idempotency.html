@@ -16,9 +16,10 @@
         </style>
     </noscript>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-    </style>
+    <!-- Preload Ubuntu font files directly -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKfw72.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"></noscript>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
@@ -36,17 +37,10 @@
 
     <title>Understanding Idempotency: A Developer's Complete Guide | DevBlog</title>
 
-    <!-- Shared CSS -->
+    <!-- Preload and load shared CSS -->
+    <link rel="preload" href="../shared.css" as="style">
     <link href="../shared.css" rel="stylesheet">
 
-    <!-- Preload critical component files -->
-    <link rel="preload" href="../components/site-header.js" as="script">
-    <link rel="preload" href="../components/article-header.js" as="script">
-    <link rel="preload" href="../components/site-footer.js" as="script">
-    <link rel="preload" href="../components/back-to-top.js" as="script">
-    <link rel="preload" href="../components/callout-box.js" as="script">
-    <link rel="preload" href="../components/author-bio.js" as="script">
-    <link rel="preload" href="../components/smooth-scroll.js" as="script">
 
     <!-- Load Prism.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-twilight.min.css">
