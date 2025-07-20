@@ -269,6 +269,23 @@
 
         let currentFilter = '';
 
+        // Function to get URL parameters
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('labels') || '';
+        }
+
+        // Function to update URL with current filter
+        function updateUrl(filterTerm) {
+            const url = new URL(window.location);
+            if (filterTerm) {
+                url.searchParams.set('labels', filterTerm);
+            } else {
+                url.searchParams.delete('labels');
+            }
+            window.history.replaceState({}, '', url);
+        }
+
         // Function to normalize labels for comparison
         function normalizeLabel(label) {
             return label.toLowerCase().trim().replace(/\s+/g, '-');
@@ -304,7 +321,7 @@
         }
 
         // Function to filter posts
-        function filterPosts(filterTerm) {
+        function filterPosts(filterTerm, updateUrlParam = true) {
             const normalizedFilter = normalizeLabel(filterTerm);
             let visibleCount = 0;
 
@@ -325,6 +342,11 @@
             // Update UI feedback
             updateFilterStatus(filterTerm, visibleCount);
             highlightLabels(filterTerm);
+
+            // Update URL parameter
+            if (updateUrlParam) {
+                updateUrl(filterTerm);
+            }
         }
 
         // Function to update filter status
@@ -344,6 +366,16 @@
             filterInput.value = '';
             currentFilter = '';
             filterPosts('');
+        }
+
+        // Function to initialize filter from URL
+        function initializeFromUrl() {
+            const urlFilter = getUrlParams();
+            if (urlFilter) {
+                filterInput.value = urlFilter;
+                currentFilter = urlFilter;
+                filterPosts(urlFilter, false); // Don't update URL when initializing from URL
+            }
         }
 
         // Function to make labels clickable
@@ -385,6 +417,17 @@
                 currentFilter = filterInput.value;
                 filterPosts(currentFilter);
             }
+        });
+
+        // Initialize filter from URL parameters
+        initializeFromUrl();
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            const urlFilter = getUrlParams();
+            filterInput.value = urlFilter;
+            currentFilter = urlFilter;
+            filterPosts(urlFilter, false);
         });
 
         // Make labels clickable after components load
