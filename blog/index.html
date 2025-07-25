@@ -378,29 +378,6 @@
             }
         }
 
-        // Function to make labels clickable
-        function makeLabelsClickable() {
-            // Wait for labels components to be fully rendered
-            setTimeout(() => {
-                blogPosts.forEach(post => {
-                    const labelsComponent = post.querySelector('labels-component');
-                    if (labelsComponent && labelsComponent.shadowRoot) {
-                        const labelElements = labelsComponent.shadowRoot.querySelectorAll('.label');
-                        labelElements.forEach(labelEl => {
-                            labelEl.style.cursor = 'pointer';
-                            labelEl.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                const labelText = labelEl.textContent.trim();
-                                filterInput.value = labelText;
-                                currentFilter = labelText;
-                                filterPosts(labelText);
-                            });
-                        });
-                    }
-                });
-            }, 100);
-        }
 
         // Event listeners
         filterInput.addEventListener('input', (e) => {
@@ -429,12 +406,6 @@
             currentFilter = urlFilter;
             filterPosts(urlFilter, false);
         });
-
-        // Make labels clickable after components load
-        makeLabelsClickable();
-        
-        // Also try again after a longer delay to ensure components are fully loaded
-        setTimeout(makeLabelsClickable, 500);
     }
 </script>
 </body>

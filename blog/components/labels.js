@@ -26,6 +26,7 @@ class Labels extends HTMLElement {
     render() {
         const labelString = this.textContent?.trim() || '';
         const labels = this.processLabels(labelString);
+        const blogUrl = '/blog/';
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -62,11 +63,16 @@ class Labels extends HTMLElement {
                     padding: 0.25rem 0.75rem;
                     text-decoration: none;
                     transition: var(--transition, all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+                    cursor: pointer;
                 }
 
                 .label:hover {
                     opacity: 0.8;
                     transform: translateY(-1px);
+                }
+
+                .label:visited {
+                    color: white;
                 }
 
                 /* Hidden state */
@@ -114,7 +120,7 @@ class Labels extends HTMLElement {
                 }
             </style>
             <div class="labels-container">
-                ${labels.map(label => `<span class="label">${label}</span>`).join('')}
+                ${labels.map(label => `<a href="${blogUrl}?labels=${encodeURIComponent(label)}" class="label">${label}</a>`).join('')}
             </div>
         `;
     }

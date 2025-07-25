@@ -1,5 +1,9 @@
 # Claude Guidelines
 
+## Testing
+
+- Check if http://localhost:8000/ is accessible before trying to run a python webserver because it might be already running.
+
 ## Technical Accuracy Guardrails
 
 ### Verification Requirements
