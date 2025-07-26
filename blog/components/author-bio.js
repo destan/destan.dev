@@ -59,9 +59,9 @@ class AuthorBio extends HTMLElement {
 
                 .author-avatar {
                     align-items: center;
-                    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--accent-color, #f59e0b));
+                    background: var(--primary-color);
                     border-radius: 50%;
-                    color: white;
+                    color: var(--primary-text-color-when-primary-color-is-bg);
                     display: flex;
                     flex-shrink: 0;
                     font-size: 1.5rem;

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive guide to organizing your development environment with clean directory structures and best practices for file system organization.">
+    <meta name="keywords" content="file system, directory structure, development environment, organization, productivity, workflow">
+    <meta name="author" content="Destan Sarpkaya">
+
+    <!-- SEO-friendly fallback content for web components -->
+    <noscript>
+        <style>
+            code[class*=language-], pre[class*=language-] {
+                text-shadow: none !important;
+            }
+        </style>
+    </noscript>
+
+    <!-- Preload Ubuntu font files directly -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKfw72.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"></noscript>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://destan.dev/blog/tech/development-directory-structure">
+    <meta property="og:title" content="The Developer's Guide to a Tidy File System">
+    <meta property="og:description" content="Learn how to organize your development environment with clean directory structures and boost your productivity.">
+    <meta property="og:image" content="https://destan.dev/images/file-structure-guide.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://destan.dev/blog/tech/development-directory-structure">
+    <meta property="twitter:title" content="The Developer's Guide to a Tidy File System">
+    <meta property="twitter:description" content="Learn how to organize your development environment with clean directory structures and boost your productivity.">
+    <meta property="twitter:image" content="https://destan.dev/images/file-structure-guide.jpg">
+
+    <title>The Developer's Guide to a Tidy File System | DevBlog</title>
+
+    <!-- Preload and load shared CSS -->
+    <link rel="preload" href="../shared.css" as="style">
+    <link href="../shared.css" rel="stylesheet">
+
+    <!-- Load Prism.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-twilight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+<site-header>
+    <bread-crumbs>Home > Blog > Tech</bread-crumbs>
+    <current-page>Development Directory Structure</current-page>
+</site-header>
+
+<main class="main-content">
+    <div class="container">
+        <article>
+            <article-header>
+                <h1 slot="title">The Developer's Guide to a Tidy File System</h1>
+                <p slot="subtitle">Organize Your Development Environment for Maximum Productivity</p>
+                <time datetime="2025-07-25" slot="date">2025-07-25</time>
+            </article-header>
+
+            <section class="content-section">
+                <p>As engineers, we obsess over clean code, elegant architectures, and well-organized repositories. Yet many of us work with chaotic file systems that slow us down daily. After 15+ years in the industry, I've learned that a well-structured file system is as crucial as clean code.</p>
+            </section>
+
+            <section class="content-section">
+                <h2 id="why-file-organization-matters">Why File Organization Matters</h2>
+
+                <p><strong>Cognitive Load Reduction</strong>: A consistent structure means less mental overhead when switching between projects or machines. You always know where things are.</p>
+
+                <p><strong>Faster Context Switching</strong>: Whether you're jumping between personal projects and work tasks, or onboarding to a new machine, familiar paths reduce friction.</p>
+
+                <p><strong>Backup Strategy</strong>: Organized directories make it trivial to backup only what matters and exclude build artifacts or cache directories.</p>
+
+                <p><strong>Team Consistency</strong>: When your team follows similar patterns, pair programming and troubleshooting become more efficient.</p>
+            </section>
+
+            <section class="content-section">
+                <h2 id="the-structure">The Structure</h2>
+
+                <p>Here's the directory structure I recommend for both personal and work machines:</p>
+
+                <pre><code class="language-bash">📁 root
+├─ 📁 home
+│  └─ 📁 &lt;user&gt;
+└─ 📁 development
+   ├─ 📁 acme-workspace (work projects)
+   ├─ 📁 apps (standalone applications)
+   │  ├─ 📁 ngrok
+   │  └─ 📁 toolbox
+   ├─ 📁 tunes-workspace (personal projects)
+   └─ 📁 workspace (miscellaneous/experimental)
+</code></pre>
+
+                <p><strong>Key principles:</strong></p>
+                <ul>
+                    <li><code>/development</code> lives at root level for universal access</li>
+                    <li>Workspaces group related projects (company, personal, experiments)</li>
+                    <li><code>/apps</code> contains standalone tools and utilities</li>
+                    <li>Consistent naming across all machines</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2 id="setting-up-separate-partition">Setting Up a Separate Partition</h2>
+
+                <p>I strongly recommend putting <code>/development</code> on a separate partition. This provides:</p>
+                <ul>
+                    <li><strong>Isolation</strong>: OS reinstalls don't affect your projects</li>
+                    <li><strong>Performance</strong>: Dedicated I/O for development work</li>
+                    <li><strong>Backup granularity</strong>: Back up code separately from OS</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2 id="conclusion">Conclusion</h2>
+
+                <p>This structure has served me well across dozens of machines and multiple companies. The key is consistency—pick a structure and stick with it everywhere. Your future self will thank you.</p>
+
+                <p>The separate partition approach might seem like overkill, but it's saved me countless hours during OS upgrades, laptop migrations, and system failures. Treat your development environment as infrastructure—it deserves the same care you give your production systems.</p>
+
+                <callout-box type="success">
+                    <title>💡 Key Takeaway</title>
+                    <p>A well-organized file system is as important as clean code. Invest time in setting up a consistent structure once, and reap the productivity benefits for years to come.</p>
+                </callout-box>
+            </section>
+        </article>
+
+        <labels-component>file system, development environment, productivity</labels-component>
+
+        <author-bio
+            author="Destan Sarpkaya"
+            author-initials="DS"
+            title="Software Architect">
+        </author-bio>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<back-to-top></back-to-top>
+
+<!-- Load Individual Components -->
+<script src="../components/site-header.js"></script>
+<script src="../components/article-header.js"></script>
+<script src="../components/site-footer.js"></script>
+<script src="../components/back-to-top.js"></script>
+<script src="../components/callout-box.js"></script>
+<script src="../components/labels.js"></script>
+<script src="../components/author-bio.js"></script>
+<script src="../components/smooth-scroll.js"></script>
+
+<script>
+    // Components will load automatically
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Initialize smooth scrolling
+        if (!document.querySelector('smooth-scroll')) {
+            const smoothScroll = document.createElement('smooth-scroll');
+            smoothScroll.style.display = 'none';
+            document.body.appendChild(smoothScroll);
+        }
+
+        // Add overflow detection for code blocks on mobile
+        function handleCodeBlockOverflow() {
+            const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+            codeBlocks.forEach(block => {
+                if (block.scrollWidth > block.clientWidth) {
+                    block.setAttribute('data-overflowing', 'true');
+                } else {
+                    block.removeAttribute('data-overflowing');
+                }
+            });
+        }
+
+        // Run on load and resize
+        handleCodeBlockOverflow();
+        window.addEventListener('resize', handleCodeBlockOverflow);
+
+        console.log('All individual components loaded');
+    });
+</script>
+</body>
+</html>

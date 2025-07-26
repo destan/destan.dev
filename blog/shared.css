@@ -1,10 +1,11 @@
 :root {
-    --accent-color: #f59e0b;
+    --accent-color: #E95420;
     --background: #f8fafc;
     --border-color: #e2e8f0;
     --font-family-mono: monospace;
     --font-family-sans: Ubuntu, sans-serif;
     --primary-color: #2563eb;
+    --primary-text-color-when-primary-color-is-bg: #ffffff;
     --primary-dark: #1d4ed8;
     --secondary-color: #64748b;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

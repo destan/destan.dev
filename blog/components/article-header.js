@@ -73,7 +73,7 @@ class ArticleHeader extends HTMLElement {
                     align-items: center;
                     background: var(--primary-color);
                     border-radius: 50%;
-                    color: white;
+                    color: var(--primary-text-color-when-primary-color-is-bg);
                     display: flex;
                     font-weight: 600;
                     height: 40px;
