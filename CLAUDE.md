@@ -30,3 +30,21 @@
 - Always adhere to HTML, CSS and Javascript best practices and use the latest stable versions.
 - When creating or updating a web component, adhere to web component rules and best practices.
 - Note that this is a static website so do not use mutation listeners.
+
+## Browser Automation & Screenshots
+
+This project has Playwright MCP server configured for browser automation and screenshots.
+
+### Available Tools
+- `mcp__playwright__browser_navigate` - Navigate to URLs
+- `mcp__playwright__browser_take_screenshot` - Take screenshots (supports fullPage option)
+- `mcp__playwright__browser_snapshot` - Capture accessibility snapshots
+- `mcp__playwright__browser_click` - Click elements
+- `mcp__playwright__browser_type` - Type text into inputs
+- `mcp__playwright__browser_evaluate` - Execute JavaScript
+- Full tool list: https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#tools
+
+### Usage Guidelines
+- Always check if localhost:8000 is running before starting new servers
+- Use `mcp__playwright__browser_take_screenshot` with `fullPage: true` for complete page captures
+- Clean up temporary files (screenshots, etc.) after completing tasks
