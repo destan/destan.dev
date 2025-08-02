@@ -42,4 +42,28 @@
 		<priority>0.8</priority>
 		<changefreq>monthly</changefreq>
 	</url>
+	<url>
+		<loc>https://destan.dev/blog/</loc>
+		<lastmod>2025-08-02T00:00:00+00:00</lastmod>
+		<priority>0.9</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>https://destan.dev/blog/tech/idempotent-response-codes.html</loc>
+		<lastmod>2025-07-26T00:00:00+00:00</lastmod>
+		<priority>0.8</priority>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>https://destan.dev/blog/tech/development-directory-structure.html</loc>
+		<lastmod>2025-07-25T00:00:00+00:00</lastmod>
+		<priority>0.8</priority>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>https://destan.dev/blog/tech/java-multi-world-package-naming.html</loc>
+		<lastmod>2025-08-02T00:00:00+00:00</lastmod>
+		<priority>0.8</priority>
+		<changefreq>monthly</changefreq>
+	</url>
 </urlset>
