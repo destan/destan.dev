@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive guide to Java multi-word package naming conventions, covering JLS requirements and industry best practices.">
+    <meta name="keywords" content="Java, multi-word packages, package naming, JLS, lowercase, concatenation, Google Style Guide">
+    <meta name="author" content="Destan Sarpkaya">
+
+    <!-- SEO-friendly fallback content for web components -->
+    <noscript>
+        <style>
+            code[class*=language-], pre[class*=language-] {
+                text-shadow: none !important;
+            }
+        </style>
+    </noscript>
+
+    <!-- Preload Ubuntu font files directly -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKfw72.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"></noscript>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://destan.dev/blog/tech/java-multi-world-package-naming">
+    <meta property="og:title" content="Java Multi-Word Package Naming: JLS Rules and Best Practices">
+    <meta property="og:description" content="Learn how to properly name multi-word Java packages according to JLS requirements and industry standards.">
+    <meta property="og:image" content="https://destan.dev/images/java-package-naming.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://destan.dev/blog/tech/java-multi-world-package-naming">
+    <meta property="twitter:title" content="Java Multi-Word Package Naming: JLS Rules and Best Practices">
+    <meta property="twitter:description" content="Learn how to properly name multi-word Java packages according to JLS requirements and industry standards.">
+    <meta property="twitter:image" content="https://destan.dev/images/java-package-naming.jpg">
+
+    <title>Java Multi-Word Package Naming: JLS Rules and Best Practices | DevBlog</title>
+
+    <!-- Preload and load shared CSS -->
+    <link rel="preload" href="../shared.css" as="style">
+    <link href="../shared.css" rel="stylesheet">
+
+    <!-- Load Prism.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-twilight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+<site-header>
+    <bread-crumbs>Home > Blog > Tech</bread-crumbs>
+    <current-page>Java Package Naming</current-page>
+</site-header>
+
+<main class="main-content">
+    <div class="container">
+        <article>
+            <article-header>
+                <h1 slot="title">Java Multi-Word Package Naming: JLS Rules and Best Practices</h1>
+                <p slot="subtitle">How to Handle Multi-Word Components in Java Package Names</p>
+                <time datetime="2025-08-02" slot="date">2025-08-02</time>
+            </article-header>
+
+            <section class="content-section">
+                <p>When naming Java packages with multiple words, the <strong>standard approach is concatenation without separators</strong>. For example: <code>com.company.deepspace</code>, <code>org.apache.commons.collections</code>, or <code>com.example.usermanagement</code>.</p>
+                
+                <p>While this may seem to reduce readability, it maintains consistency with Java's fundamental design principle that <strong>package names must be all lowercase</strong> to avoid conflicts with class names.</p>
+
+            </section>
+
+            <section class="content-section">
+                <h2 id="jls-requirements">Java Language Specification (JLS) Rules</h2>
+
+                <p>The JLS establishes these <strong>mandatory requirements</strong> for all package names:</p>
+
+                <ul>
+                    <li><strong>Lowercase only</strong>: "Package names are written in all lower case to avoid conflict with the names of classes or interfaces"</li>
+                    <li><strong>Valid Java identifiers</strong>: Each component must consist of Java letters (A-Z, a-z, underscore, dollar sign) followed by Java letters or digits</li>
+                    <li><strong>Dot separation</strong>: Components are separated by dots only</li>
+                    <li><strong>No hyphens or spaces</strong>: These characters are forbidden in package names</li>
+                    <li><strong>Reserved word handling</strong>: Java keywords require underscore prefixes (e.g., <code>_class</code>, <code>_interface</code>)</li>
+                </ul>
+
+                <callout-box type="warning">
+                    <p>⚠️ JLS Violation</p>
+                    <p>Using hyphens, spaces, or mixed case in package names will cause compilation errors. These are not style preferences but language requirements.</p>
+                </callout-box>
+            </section>
+
+            <section class="content-section">
+                <h2 id="multi-word-strategies">Multi-Word Package Strategies</h2>
+
+                <h3 id="concatenation">Standard Concatenation</h3>
+                <p>The recommended approach for multi-word packages is <strong>direct concatenation without separators</strong>:</p>
+
+                <pre><code class="language-java">// Recommended multi-word packages
+com.company.deepspace          // deep + space
+com.example.usermanagement     // user + management  
+org.project.dataaccess         // data + access
+com.app.productcatalog         // product + catalog</code></pre>
+
+                <h3 id="domain-conversion">Domain Name Conversion</h3>
+                <p>When converting domain names with hyphens, Oracle permits underscores:</p>
+
+                <pre><code class="language-java">// Domain conversion examples
+hyphenated-name.example.org → org.example.hyphenated_name
+my-company.com → com.my_company
+api-gateway.service.com → com.service.api_gateway</code></pre>
+
+                <callout-box type="warning">
+                    <p>⚠️ Style Guide Tension</p>
+                    <p>Oracle's underscore allowance for domain conversion creates tension with stricter style guides like Google's, which prohibit underscores entirely.</p>
+                </callout-box>
+            </section>
+
+            <section class="content-section">
+                <h2 id="industry-approaches">Industry Approaches</h2>
+
+                <h3 id="google-strict">Google's Strict Approach</h3>
+                <p>Google's Java Style Guide is the most restrictive:</p>
+
+                <blockquote>
+                    "Package names use only lowercase letters and digits (no underscores). Consecutive words are simply concatenated together."
+                    <cite>— Google Java Style Guide</cite>
+                </blockquote>
+
+                <pre><code class="language-java">// Google's approach
+com.example.deepspace          // ✅ Correct
+com.example.deep_space         // ❌ Forbidden
+com.example.deepSpace          // ❌ Forbidden</code></pre>
+
+                <h3 id="real-world-examples">Real-World Examples</h3>
+                <p>Major projects demonstrate consistent multi-word concatenation:</p>
+
+                <pre><code class="language-java">// Apache projects
+org.apache.commons.collections4
+org.apache.kafka.clients.consumer
+
+// Spring Framework
+org.springframework.boot.autoconfigure
+org.springframework.web.servlet
+
+// Jackson
+com.fasterxml.jackson.databind
+com.fasterxml.jackson.dataformat</code></pre>
+            </section>
+
+            <section class="content-section">
+                <h2 id="practical-examples">Multi-Word Package Examples</h2>
+
+                <h3 id="correct-examples">✅ Correct Multi-Word Packages</h3>
+
+                <pre><code class="language-java">// Business domain packages
+com.company.customermanagement
+com.company.orderfulfillment
+com.company.paymentprocessing
+com.company.inventorycontrol
+
+// Technical packages
+com.app.databaseaccess
+com.app.userinterface
+com.app.backgroundservices
+com.app.errorhandling</code></pre>
+
+                <h3 id="incorrect-examples">❌ Common Multi-Word Mistakes</h3>
+
+                <pre><code class="language-java">// Mixed case violations
+com.company.customerManagement    // camelCase forbidden
+com.company.OrderFulfillment      // PascalCase forbidden
+
+// Invalid separators
+com.company.customer-management   // hyphens forbidden
+com.company.customer_management   // underscores discouraged
+com.company.customer management   // spaces forbidden
+
+// Overly complex names
+com.company.verylongmultiwordpackagenamethatishardtoread</code></pre>
+
+                <callout-box type="success">
+                    <p>💡 Key Takeaway</p>
+                    <p>While underscores are technically allowed by the JLS for package names, industry practice strongly favors concatenation. Underscores are mainly used for domain name conversion (e.g., <code>hyphenated-domain.com</code> → <code>com.hyphenated_domain</code>) rather than general multi-word packages.</p>
+                    <p>For multi-word Java packages, concatenate words in lowercase without any separators. This approach satisfies JLS requirements and follows industry standards used by major frameworks like Spring, Apache, and Jackson.</p>
+                </callout-box>
+            </section>
+        </article>
+
+        <labels-component>Java, package naming, JLS, conventions, multi-word</labels-component>
+
+        <author-bio
+            author="Destan Sarpkaya"
+            author-initials="DS"
+            title="Software Architect">
+        </author-bio>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<back-to-top></back-to-top>
+
+<!-- Load Individual Components -->
+<script src="../components/site-header.js"></script>
+<script src="../components/article-header.js"></script>
+<script src="../components/site-footer.js"></script>
+<script src="../components/back-to-top.js"></script>
+<script src="../components/callout-box.js"></script>
+<script src="../components/labels.js"></script>
+<script src="../components/author-bio.js"></script>
+<script src="../components/smooth-scroll.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize smooth scrolling
+        if (!document.querySelector('smooth-scroll')) {
+            const smoothScroll = document.createElement('smooth-scroll');
+            smoothScroll.style.display = 'none';
+            document.body.appendChild(smoothScroll);
+        }
+
+        // Add overflow detection for code blocks on mobile
+        function handleCodeBlockOverflow() {
+            const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+            codeBlocks.forEach(block => {
+                if (block.scrollWidth > block.clientWidth) {
+                    block.setAttribute('data-overflowing', 'true');
+                } else {
+                    block.removeAttribute('data-overflowing');
+                }
+            });
+        }
+
+        handleCodeBlockOverflow();
+        window.addEventListener('resize', handleCodeBlockOverflow);
+    });
+</script>
+</body>
+</html>

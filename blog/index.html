@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Destan Sarpkaya's technical blog featuring articles on software development, system design, and programming best practices.">
+    <meta name="keywords" content="blog, software development, programming, system design, technical articles">
+    <meta name="author" content="Destan Sarpkaya">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://destan.dev/blog">
+    <meta property="og:title" content="Destan Sarpkaya's Blog">
+    <meta property="og:description" content="Technical articles on software development, system design, and programming best practices.">
+    <meta property="og:image" content="https://destan.dev/images/DestanSarpkaya.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://destan.dev/blog">
+    <meta property="twitter:title" content="Destan Sarpkaya's Blog">
+    <meta property="twitter:description" content="Technical articles on software development, system design, and programming best practices.">
+    <meta property="twitter:image" content="https://destan.dev/images/DestanSarpkaya.jpg">
+
+    <title>Blog | Destan Sarpkaya</title>
+
+    <!-- Shared CSS -->
+    <link href="shared.css" rel="stylesheet">
+
+    <!-- Preload critical component files -->
+    <link rel="preload" href="components/site-header.js" as="script">
+    <link rel="preload" href="components/site-footer.js" as="script">
+    <link rel="preload" href="components/back-to-top.js" as="script">
+    <link rel="preload" href="components/smooth-scroll.js" as="script">
+
+    <style>
+        .blog-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-post-card {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-post-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .blog-post-card h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .blog-post-card:hover h2 {
+            color: var(--primary-color);
+        }
+
+        .blog-post-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post-excerpt {
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .blog-header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-header p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .no-posts {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Label Filter Styles */
+        .label-filter {
+            margin-top: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--surface);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .clear-button {
+            padding: 0.75rem 1rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .clear-button:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+        }
+
+        .filter-status {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Filtered state styles */
+        .blog-post-card.filtered-out {
+            display: none;
+        }
+
+        .labels-container .label.highlighted {
+            background: var(--primary-color) !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .blog-post-card {
+                padding: 1rem;
+            }
+            
+            .label-filter {
+                margin-top: 1.5rem;
+            }
+            
+            .filter-input-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .clear-button {
+                align-self: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+<site-header>
+    <bread-crumbs>Home</bread-crumbs>
+    <current-page>Blog</current-page>
+</site-header>
+
+<main class="main-content">
+    <div class="container">
+        <div class="blog-header">
+            <h1>Blog</h1>
+            <p>Technical articles on software development, system design, and programming best practices.</p>
+            
+            <!-- Label Filter -->
+            <div class="label-filter">
+                <div class="filter-input-group">
+                    <input type="text" id="labelFilter" placeholder="Filter by label (e.g., programming, APIs)" class="filter-input">
+                    <button id="clearFilter" class="clear-button" style="display: none;">Clear</button>
+                </div>
+                <div id="filterStatus" class="filter-status" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <a href="tech/idempotent-response-codes.html" class="blog-post-card">
+                <h2>Idempotent Endpoints: Different Responses, Same Server State</h2>
+                <div class="blog-post-meta">
+                    <time datetime="2025-07-26">July 26, 2025</time> • Tech
+                </div>
+                <labels-component>idempotency, HTTP, REST, RFC 9110</labels-component>
+                <div class="blog-post-excerpt">
+                    Understanding how idempotent endpoints can return different HTTP response codes while maintaining server state consistency, with examples and authoritative RFC 9110 references.
+                </div>
+                <span class="read-more">Read more →</span>
+            </a>
+
+            <a href="tech/development-directory-structure.html" class="blog-post-card">
+                <h2>The Developer's Guide to a Tidy File System</h2>
+                <div class="blog-post-meta">
+                    <time datetime="2025-07-25">July 25, 2025</time> • Tech
+                </div>
+                <labels-component>file system, development environment, productivity</labels-component>
+                <div class="blog-post-excerpt">
+                    Discover a way to boost your productivity just by using a clean directory structure. A guide to creating consistent file systems that work well across different projects and machines.
+                </div>
+                <span class="read-more">Read more →</span>
+            </a>
+            
+            <a href="tech/idempotency.html" class="blog-post-card">
+                <h2>Understanding Idempotency</h2>
+                <div class="blog-post-meta">
+                    <time datetime="2025-07-15">July 15, 2025</time> • Tech
+                </div>
+                <labels-component>idempotency, system design, programming</labels-component>
+                <div class="blog-post-excerpt">
+                    A comprehensive guide to understanding idempotency in programming, APIs, and system design with practical examples and best practices. Learn how to build reliable and predictable systems that gracefully handle retries and failures.
+                </div>
+                <span class="read-more">Read more →</span>
+            </a>
+        </div>
+    </div>
+</main>
+
+<site-footer></site-footer>
+
+<back-to-top></back-to-top>
+
+<!-- Load Individual Components -->
+<script src="components/site-header.js"></script>
+<script src="components/site-footer.js"></script>
+<script src="components/labels.js"></script>
+<script src="components/back-to-top.js"></script>
+<script src="components/smooth-scroll.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize smooth scrolling
+        if (!document.querySelector('smooth-scroll')) {
+            const smoothScroll = document.createElement('smooth-scroll');
+            smoothScroll.style.display = 'none';
+            document.body.appendChild(smoothScroll);
+        }
+
+        // Initialize label filter functionality
+        initializeLabelFilter();
+
+        console.log('Blog page components loaded');
+    });
+
+    function initializeLabelFilter() {
+        const filterInput = document.getElementById('labelFilter');
+        const clearButton = document.getElementById('clearFilter');
+        const filterStatus = document.getElementById('filterStatus');
+        const blogPosts = document.querySelectorAll('.blog-post-card');
+
+        let currentFilter = '';
+
+        // Function to get URL parameters
+        function getUrlParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('labels') || '';
+        }
+
+        // Function to update URL with current filter
+        function updateUrl(filterTerm) {
+            const url = new URL(window.location);
+            if (filterTerm) {
+                url.searchParams.set('labels', filterTerm);
+            } else {
+                url.searchParams.delete('labels');
+            }
+            window.history.replaceState({}, '', url);
+        }
+
+        // Function to normalize labels for comparison
+        function normalizeLabel(label) {
+            return label.toLowerCase().trim().replace(/\s+/g, '-');
+        }
+
+        // Function to get labels from a blog post
+        function getPostLabels(postElement) {
+            const labelsComponent = postElement.querySelector('labels-component');
+            if (!labelsComponent) return [];
+            
+            const labelText = labelsComponent.textContent.trim();
+            if (!labelText) return [];
+            
+            return labelText.split(',').map(label => normalizeLabel(label));
+        }
+
+        // Function to highlight matching labels in posts
+        function highlightLabels(filterTerm) {
+            blogPosts.forEach(post => {
+                const labelsComponent = post.querySelector('labels-component');
+                if (labelsComponent && labelsComponent.shadowRoot) {
+                    const labelElements = labelsComponent.shadowRoot.querySelectorAll('.label');
+                    labelElements.forEach(labelEl => {
+                        const labelText = normalizeLabel(labelEl.textContent);
+                        if (filterTerm && labelText.includes(normalizeLabel(filterTerm))) {
+                            labelEl.classList.add('highlighted');
+                        } else {
+                            labelEl.classList.remove('highlighted');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Function to filter posts
+        function filterPosts(filterTerm, updateUrlParam = true) {
+            const normalizedFilter = normalizeLabel(filterTerm);
+            let visibleCount = 0;
+
+            blogPosts.forEach(post => {
+                const postLabels = getPostLabels(post);
+                const hasMatchingLabel = postLabels.some(label => 
+                    label.includes(normalizedFilter)
+                );
+
+                if (!filterTerm || hasMatchingLabel) {
+                    post.classList.remove('filtered-out');
+                    visibleCount++;
+                } else {
+                    post.classList.add('filtered-out');
+                }
+            });
+
+            // Update UI feedback
+            updateFilterStatus(filterTerm, visibleCount);
+            highlightLabels(filterTerm);
+
+            // Update URL parameter
+            if (updateUrlParam) {
+                updateUrl(filterTerm);
+            }
+        }
+
+        // Function to update filter status
+        function updateFilterStatus(filterTerm, visibleCount) {
+            if (filterTerm) {
+                filterStatus.textContent = `Showing ${visibleCount} post${visibleCount !== 1 ? 's' : ''} with "${filterTerm}"`;
+                filterStatus.style.display = 'block';
+                clearButton.style.display = 'block';
+            } else {
+                filterStatus.style.display = 'none';
+                clearButton.style.display = 'none';
+            }
+        }
+
+        // Function to clear filter
+        function clearFilter() {
+            filterInput.value = '';
+            currentFilter = '';
+            filterPosts('');
+        }
+
+        // Function to initialize filter from URL
+        function initializeFromUrl() {
+            const urlFilter = getUrlParams();
+            if (urlFilter) {
+                filterInput.value = urlFilter;
+                currentFilter = urlFilter;
+                filterPosts(urlFilter, false); // Don't update URL when initializing from URL
+            }
+        }
+
+
+        // Event listeners
+        filterInput.addEventListener('input', (e) => {
+            currentFilter = e.target.value;
+            filterPosts(currentFilter);
+        });
+
+        clearButton.addEventListener('click', clearFilter);
+
+        // Handle Enter key
+        filterInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                currentFilter = filterInput.value;
+                filterPosts(currentFilter);
+            }
+        });
+
+        // Initialize filter from URL parameters
+        initializeFromUrl();
+
+        // Handle browser back/forward navigation
+        window.addEventListener('popstate', () => {
+            const urlFilter = getUrlParams();
+            filterInput.value = urlFilter;
+            currentFilter = urlFilter;
+            filterPosts(urlFilter, false);
+        });
+    }
+</script>
+</body>
+</html>
