@@ -31,6 +31,11 @@
 - When creating or updating a web component, adhere to web component rules and best practices.
 - Note that this is a static website so do not use mutation listeners.
 
+### Blog content
+
+-  In a callout-box, the content should be self-contained because it's visually isolated from the surrounding
+   text.
+
 ## Browser Automation & Screenshots
 
 This project has Playwright MCP server configured for browser automation and screenshots.
