@@ -52,4 +52,15 @@ This project has Playwright MCP server configured for browser automation and scr
 ### Usage Guidelines
 - Always check if localhost:8000 is running before starting new servers
 - Use `mcp__playwright__browser_take_screenshot` with `fullPage: true` for complete page captures
-- Clean up temporary files (screenshots, etc.) after completing tasks
+
+### MANDATORY Cleanup Requirements
+- **IMMEDIATELY after each screenshot**: Delete the temporary file using `rm "file_path"`
+- **Before marking any task complete**: Run cleanup verification
+- **After browser automation tasks**: Check `/var/folders/*/T/playwright-mcp-output/` for leftover files
+- **Example cleanup**: `rm "/var/folders/.../page-timestamp.jpeg"` must be done after every screenshot
+
+### Task Completion Checklist
+- [ ] Primary task completed
+- [ ] All temporary files deleted (screenshots, downloads, etc.)
+- [ ] No leftover browser automation artifacts
+- [ ] Code follows project conventions (CSS standards, web components, etc.)
